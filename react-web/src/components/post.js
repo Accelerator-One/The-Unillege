@@ -12,9 +12,10 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Comment from './comment';
+import List from '@material-ui/core/List';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,7 +52,7 @@ export default function RecipeReviewCard({post_id,post,user_id,timestamp,image,v
     <Card className={classes.root} id={post_id}>
       <CardHeader
         avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
+          <Avatar aria-label="header" className={classes.avatar}>
             {user_id.substr(0,1)}
           </Avatar>
         }
@@ -64,7 +65,7 @@ export default function RecipeReviewCard({post_id,post,user_id,timestamp,image,v
         subheader={timestamp}
       />
       {
-          (image!=="null")?
+          (image!=="")?
           <CardMedia className={classes.media}
           image={image} title="content"/>
           : <p>&nbsp;</p>
@@ -76,10 +77,10 @@ export default function RecipeReviewCard({post_id,post,user_id,timestamp,image,v
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton aria-label="like">
           <FavoriteIcon />
-          {votes}
         </IconButton>
+        {votes}
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
@@ -93,15 +94,10 @@ export default function RecipeReviewCard({post_id,post,user_id,timestamp,image,v
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>
-            Comment Branch 1
-          </Typography>
-          <Typography paragraph>
-            Comment Branch 2
-          </Typography>
-          <Typography paragraph>
-            Comment Branch 3
-          </Typography>
+          <List>
+                <Comment comment_id='1' user_name='Shubham Luthra' post_id='1' comment='Hi!' timestamp='12 Nov, 2020' votes='2'/>
+                <Comment comment_id='2' user_name='Harsh Srivastava' post_id='1' comment='Hello!' timestamp='12 Nov, 2020' votes='1'/>
+          </List>
         </CardContent>
       </Collapse>
     </Card>

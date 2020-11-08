@@ -1,1 +1,0 @@
-All the Custom Functional Components to operate with props to be added here!
