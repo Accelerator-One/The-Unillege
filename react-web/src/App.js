@@ -21,6 +21,8 @@ import ForumIcon from '@material-ui/icons/Forum';
 import PersonIcon from '@material-ui/icons/Person';
 import NotesIcon from '@material-ui/icons/Notes';
 
+import Post from './components/post';
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -191,9 +193,7 @@ export default function MiniDrawer() {
       <main className={classes.content}>
         <div className={classes.toolbar} />
 
-        <Typography paragraph>
-          Content Panel
-        </Typography>
+        <Post post_id='1' post='Hola Amigos' user_id='Aditya Thakur' timestamp='Nov 8,2020' image='https://live.staticflickr.com/106/299768558_02779187fe_b.jpg' votes='12' />
 
       </main>
     </div>
