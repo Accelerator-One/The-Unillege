@@ -10,6 +10,9 @@ Get yourself acquainted with your college now! - A College Information Manager A
 ## Database Schema
 [Word Document](https://docs.google.com/document/d/1Ro3Crf1UlzEwN499NxVIO7RjsLe-cB7T91FcpTcEb0U/edit?usp=sharing)
 
+## Website LOGO
+[Figma Workflow](https://www.figma.com/file/CDxmnfoPjyT7yeedqYjjKW/Untitled?node-id=1%3A6)
+
 ## Developers
 - Shubham Luthra
 - Aditya Thakur
