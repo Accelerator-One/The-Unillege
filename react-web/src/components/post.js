@@ -16,6 +16,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Comment from './comment';
 import List from '@material-ui/core/List';
+import TextField from '@material-ui/core/TextField';
+import SendIcon from '@material-ui/icons/Send';
+import { Box } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -76,11 +79,22 @@ export default function RecipeReviewCard({post_id,post,user_id,timestamp,image,v
           {post}
         </Typography>
       </CardContent>
+      
       <CardActions disableSpacing>
+        
+        {votes}
         <IconButton aria-label="like">
           <FavoriteIcon />
         </IconButton>
-        {votes}
+        
+        <TextField id={'comment-'+post_id} 
+                  label='Add comment' noValidate autoComplete='off'
+                  variant='outlined' size='small' />
+        
+        <IconButton>
+            <SendIcon/>
+        </IconButton>
+        
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
