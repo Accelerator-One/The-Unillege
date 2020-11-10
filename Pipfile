@@ -9,6 +9,8 @@ verify_ssl = true
 django = "*"
 djangorestframework = "*"
 psycopg2 = "*"
+django-filter = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.9"
