@@ -1,4 +1,5 @@
 import React from 'react';
+import Post from '../components/post';
 
 class Dashboard extends React.Component {
 
@@ -10,7 +11,7 @@ class Dashboard extends React.Component {
     render(){
         return (
             <>
-                <h2> Dashboard </h2>
+                <Post post_id='1' post='Hola Amigos' user_id='Aditya Thakur' timestamp='Nov 8,2020' image='https://live.staticflickr.com/106/299768558_02779187fe_b.jpg' votes='12' />
             </>
         );
     }
