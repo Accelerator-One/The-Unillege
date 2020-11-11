@@ -20,6 +20,7 @@ import EventIcon from '@material-ui/icons/Event';
 import ForumIcon from '@material-ui/icons/Forum';
 import PersonIcon from '@material-ui/icons/Person';
 import NotesIcon from '@material-ui/icons/Notes';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 import {
   Switch,
@@ -32,6 +33,7 @@ import Alumni from './pages/alumni';
 import Events from './pages/events';
 import Forum from './pages/forum';
 import Preparation from './pages/preparation';
+import swal from 'sweetalert';
 
 const drawerWidth = 240;
 
@@ -96,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MiniDrawer() {
+export default function MiniDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -215,6 +217,16 @@ export default function MiniDrawer() {
             <NavLink to='/preparation'>
               <ListItemText primary="Preparation" />
             </NavLink>
+          </ListItem>
+
+          <ListItem button key='logout' onClick={()=>{
+            swal('Successful','Logout Successful','success')
+            .then(()=>props.listener(false))
+            }}>
+            <ListItemIcon>
+              <ExitToAppIcon style={{ 'color':'#3f51b5' }}/>
+            </ListItemIcon>
+            <ListItemText primary="Logout" style={{ 'color':'#3f51b5' }}/>
           </ListItem>
         
       </List>

@@ -9,7 +9,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         // TODO : Toggle login var below to change auth state
-        let login = true;
+        let login = false;
         this.state = {
           login : login
         }
