@@ -9,6 +9,20 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import swal from 'sweetalert';
+
+function loginAttempt(evt,listener) {
+  evt.preventDefault();
+  let mail = document.getElementById('email').value;
+  let passwd = document.getElementById('password').value;
+  // TODO : Login | Register request to REST Django Framework
+  
+  // TODO : Add regex check on data fields above
+  if(mail.length!==0 && passwd.length!==0)
+    listener(true);
+  else
+    return swal('Unsuccessful','Incorrect username or password','error');
+}
 
 function Copyright() {
   return (
@@ -43,7 +57,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function SignIn(props) {
+  // console.log(props);
   const classes = useStyles();
 
   return (
@@ -56,7 +71,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Login | Register
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={evt=>loginAttempt(evt,props.listener)}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -68,7 +83,7 @@ export default function SignIn() {
             autoComplete="email"
             autoFocus
           />
-          <TextField
+          <TextField 
             variant="outlined"
             margin="normal"
             required
