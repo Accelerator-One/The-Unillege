@@ -10,7 +10,7 @@ class Alumni extends React.Component {
     render(){
         return (
             <>
-                <h2> Alumni </h2>
+                <h2> Alumni Stories </h2>
             </>
         );
     }

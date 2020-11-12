@@ -15,10 +15,13 @@ function loginAttempt(evt,listener) {
   evt.preventDefault();
   let mail = document.getElementById('email').value;
   let passwd = document.getElementById('password').value;
-  // TODO : Login | Register request to REST Django Framework
   
-  // TODO : Add regex check on data fields above
-  if(mail.length!==0 && passwd.length!==0)
+  // Regex Pattern Listener
+  const mailPatt = /^[a-zA-Z0-9.]+@\D+$/g;
+  const passwdPatt = /^\S{8,}$/g;
+
+  // Input Validation
+  if(mailPatt.exec(mail)!==null && passwdPatt.exec(passwd)!==null)
     listener(true);
   else
     return swal('Unsuccessful','Incorrect username or password','error');
