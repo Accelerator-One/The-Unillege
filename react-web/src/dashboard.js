@@ -19,8 +19,8 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import EventIcon from '@material-ui/icons/Event';
 import ForumIcon from '@material-ui/icons/Forum';
 import PersonIcon from '@material-ui/icons/Person';
-import NotesIcon from '@material-ui/icons/Notes';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import InfoIcon from '@material-ui/icons/Info';
 
 import {
   Switch,
@@ -32,7 +32,7 @@ import Dashboard from './pages/dashboard';
 import Alumni from './pages/alumni';
 import Events from './pages/events';
 import Forum from './pages/forum';
-import Preparation from './pages/preparation';
+import About from './pages/about';
 import swal from 'sweetalert';
 
 const drawerWidth = 240;
@@ -208,14 +208,14 @@ export default function MiniDrawer(props) {
             </NavLink>
           </ListItem>
 
-          <ListItem button key='preparation'>
+          <ListItem button key='about'>
             <ListItemIcon>
-              <NavLink to='/preparation'>
-              <NotesIcon/>
+              <NavLink to='/about'>
+              <InfoIcon/>
               </NavLink>
             </ListItemIcon>
-            <NavLink to='/preparation'>
-              <ListItemText primary="Preparation" />
+            <NavLink to='/about'>
+              <ListItemText primary="About" />
             </NavLink>
           </ListItem>
 
@@ -243,7 +243,7 @@ export default function MiniDrawer(props) {
           </Route>
           <Route path="/alumni" component={Alumni}>
           </Route>
-          <Route path="/preparation" component={Preparation}>
+          <Route path="/about" component={About}>
           </Route>
           <Route path="/" component={Dashboard}>
           </Route>

@@ -10,7 +10,7 @@ class Forum extends React.Component {
     render(){
         return (
             <>
-                <h2> Forum </h2>
+                <h2> Ask your Queries here </h2>
             </>
         );
     }

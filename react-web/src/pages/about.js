@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Preparation extends React.Component {
+class About extends React.Component {
 
     constructor(props){
         super(props);
@@ -10,10 +10,10 @@ class Preparation extends React.Component {
     render(){
         return (
             <>
-                <h2> Preparation </h2>
+                <h2> About Section </h2>
             </>
         );
     }
 }
 
-export default Preparation;
+export default About;
