@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import DashBoard from './dashboard';
+import Register from './register';
 import Login from './login';
 
 class App extends React.Component {
@@ -30,16 +31,21 @@ class App extends React.Component {
 
     render() {
 
-        const renderer = this.state.login?
-                          <DashBoard listener={this.changeLogin}/> :
-                          <Login listener={this.changeLogin} />;
+        // console.log(this.props.location.pathname);
+        const renderer = !this.state.login ?
+                        (
+                          this.props.location.pathname==='/register'?
+                          <Register/>:
+                          <Login listener={this.changeLogin} />
+                        )
+                        : <DashBoard listener={this.changeLogin}/>;
 
         return (
-          <Router>
-            { renderer }
-          </Router>
+          <>
+          { renderer }
+          </>
         )
     }
 }
 
-export default App;
+export default withRouter(App);
