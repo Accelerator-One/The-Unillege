@@ -16,6 +16,9 @@ function loginAttempt(evt,listener) {
   let mail = document.getElementById('email').value;
   let passwd = document.getElementById('password').value;
   
+  // TODO : Fetch CSRF Token from server
+
+
   // Regex Pattern Listener
   const mailPatt = /^[a-zA-Z0-9.]+@\D+$/g;
   const passwdPatt = /^\S{8,}$/g;
@@ -52,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: '100%',
     marginTop: theme.spacing(1),
   },
   submit: {
