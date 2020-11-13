@@ -20,7 +20,6 @@ import EventIcon from '@material-ui/icons/Event';
 import ForumIcon from '@material-ui/icons/Forum';
 import PersonIcon from '@material-ui/icons/Person';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import InfoIcon from '@material-ui/icons/Info';
 
 import {
   Switch,
@@ -32,7 +31,6 @@ import Dashboard from './pages/dashboard';
 import Alumni from './pages/alumni';
 import Events from './pages/events';
 import Forum from './pages/forum';
-import About from './pages/about';
 import swal from 'sweetalert';
 
 const drawerWidth = 240;
@@ -42,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   appBar: {
+    backgroundColor:'#4a418c',
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -137,7 +136,7 @@ export default function MiniDrawer(props) {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer
+      <Drawer 
         variant="permanent"
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: open,
@@ -208,17 +207,6 @@ export default function MiniDrawer(props) {
             </NavLink>
           </ListItem>
 
-          <ListItem button key='about'>
-            <ListItemIcon>
-              <NavLink to='/about'>
-              <InfoIcon/>
-              </NavLink>
-            </ListItemIcon>
-            <NavLink to='/about'>
-              <ListItemText primary="About" />
-            </NavLink>
-          </ListItem>
-
           <ListItem button key='logout' onClick={()=>{
             swal('Successful','Logout Successful','success')
             .then(()=>props.listener(false))
@@ -242,8 +230,6 @@ export default function MiniDrawer(props) {
           <Route path="/forum" component={Forum}>
           </Route>
           <Route path="/alumni" component={Alumni}>
-          </Route>
-          <Route path="/about" component={About}>
           </Route>
           <Route path="/" component={Dashboard}>
           </Route>
