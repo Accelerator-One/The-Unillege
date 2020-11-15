@@ -1,11 +1,19 @@
-import React from 'react';
-import { withRouter } from "react-router-dom";
-
+import React, {Component} from 'react';
+import { BrowserRouter, withRouter } from "react-router-dom";
+import {Provider, connect} from "react-redux";
 import DashBoard from './dashboard';
 import Register from './register';
 import Login from './login';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from "redux-thunk";
+import unillegeApp from "./reducers"; //TODO 
+import { Switch } from '@material-ui/core';
 
-class App extends React.Component {
+// let store = createStore(
+//   unillegeApp, applyMiddleware(thunk)
+//   );
+
+class App extends Component {
 
     constructor(props) {
         super(props);
@@ -17,9 +25,9 @@ class App extends React.Component {
     }
 
     // TODO : Fetch User Session Cookies
-    fetchCookies = function() {
-      return;
-    }
+    // fetchCookies = function() {
+    //   return;
+    // }
 
     // Change Login state
     changeLogin = (loginState)=> {
@@ -31,7 +39,7 @@ class App extends React.Component {
 
     render() {
 
-        // console.log(this.props.location.pathname);
+        console.log(this.props.location.pathname);
         const renderer = !this.state.login ?
                         (
                           this.props.location.pathname==='/register'?
@@ -44,6 +52,7 @@ class App extends React.Component {
           <>
           { renderer }
           </>
+          
         )
     }
 }

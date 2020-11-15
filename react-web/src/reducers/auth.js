@@ -13,7 +13,7 @@ export default function auth(state=initialState, action){
         case 'USER_LOADED':
             return {...state, isAuthenticated: true, isLoading: false, user: action.user};
         case 'LOGIN_SUCCESSFUL':
-            localStorage.setItem("token", aciton.data.token);
+            localStorage.setItem("token", action.data.token);
             return {...state, ...action.data, isAuthenticated: true, isLoading: false, errors: null};
         case 'AUTHENTICATION_ERROR':
         case 'LOGIN_FAILED':
