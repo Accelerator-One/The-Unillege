@@ -8,14 +8,14 @@ export const loadUser = () => {
         if(token){
             headers["Authorization"] = `Token ${token}`;
         }
-        return fetch("api/auth/user/", {headers,}).then(response =>{
-            if(response.status<500){
-                return response.json().then(data => {
-                    return {status: response.status, data};
+        return fetch("api/auth/user/", {headers,}).then(res =>{
+            if(res.status<500){
+                return res.json().then(data => {
+                    return {status: res.status, data};
                 })
             }else{
                 console.log("Server Error!");
-                throw response;
+                throw res;
             }
         }).then(res =>{
             if(res.status===200){
@@ -50,7 +50,7 @@ export const login = (username, password) => {
                 dispatch({type:"AUTHENTICATION_ERROR", data:res.data});
                 throw res.data;
             }else{
-                dispatch({type:"LOGIN_FAILED", data:res.data});
+                dispatch({type: "LOGIN_FAILED", data: res.data});
                 throw res.data;
             }
         })

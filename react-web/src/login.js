@@ -11,22 +11,26 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import swal from 'sweetalert';
 import { Grid } from '@material-ui/core';
+import {connect} from "react-redux";
+import {auth} from "./actions"
+import {Redirect} from "react-router-dom";
 
-function loginAttempt(evt,listener) {
+function loginAttempt(evt,login) {
   evt.preventDefault();
-  let mail = document.getElementById('email').value;
+  let uname = document.getElementById('username').value;
   let passwd = document.getElementById('password').value;
   
   // TODO : Fetch CSRF Token from server
 
 
   // Regex Pattern Listener
-  const mailPatt = /^[a-zA-Z0-9.]+@\D+$/g;
+  //const mailPatt = /^[a-zA-Z0-9.]+@\D+$/g;
   const passwdPatt = /^\S{8,}$/g;
 
   // Input Validation
-  if(mailPatt.exec(mail)!==null && passwdPatt.exec(passwd)!==null)
-    listener(true);
+  if(uname!==null && passwdPatt.exec(passwd)!==null)
+    login(uname,passwd);
+    
   else
     return swal('Unsuccessful','Incorrect username or password','error');
 }
@@ -64,10 +68,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn(props) {
-  // console.log(props);
+function SignIn(props) {
+   console.log(props);
   const classes = useStyles();
-
+  if(props.isAuthenticated) {
+    return <Redirect to="/"/>
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -78,16 +84,16 @@ export default function SignIn(props) {
         <Typography component="h1" variant="h5">
           Login
         </Typography>
-        <form className={classes.form} noValidate onSubmit={evt=>loginAttempt(evt,props.listener)}>
+        <form className={classes.form} noValidate onSubmit={evt=>loginAttempt(evt, props.login)}>
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
+            id="username"
+            label="Username"
+            name="username"
+            autoComplete="username"
             autoFocus
           />
           <TextField 
@@ -126,3 +132,24 @@ export default function SignIn(props) {
     </Container>
   );
 }
+
+const mapStateToProps = state => {
+  let errors = [];
+  if (state.auth.errors) {
+    errors = Object.keys(state.auth.errors).map(field => {
+      return {field, message: state.auth.errors[field]};
+    });
+  }
+  return {
+    errors,
+    isAuthenticated: state.auth.isAuthenticated
+  };
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    login: (username, password) => {
+      return dispatch(auth.login(username, password));
+    }
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps) (SignIn);

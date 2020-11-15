@@ -10,10 +10,11 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
+import {auth} from "./actions";
+import {connect} from "react-redux";
 function sendCredentials(evt){
   evt.preventDefault();
-
+  
   // TODO : Send credentials to server for registration
   
 
@@ -52,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+function SignUp() {
   const classes = useStyles();
 
   return (
@@ -139,3 +140,24 @@ export default function SignUp() {
     </Container>
   );
 }
+
+const mapStateToProps = state => {
+  let errors = [];
+  if (state.auth.errors) {
+    errors = Object.keys(state.auth.errors).map(field => {
+      return {field, message: state.auth.errors[field]};
+    });
+  }
+  return {
+    errors,
+    isAuthenticated: state.auth.isAuthenticated
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    register: (username, password) => dispatch(auth.register(username, password)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (SignUp)
