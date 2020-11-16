@@ -1,56 +1,133 @@
-export const addPost = text => {
-    return dispatch => {
-        let headers = {"Content-Type": "application/json"};
-        let body = JSON.stringify({text});
-        return fetch("api/posts/", {headers, method: "POST", body}).then(res=>res.json()).then(post=>{
-            return dispatch({
-                type: 'ADD_POST',
-                post
-            })
-        })
-    }
-}
-
-export const updatePost = (id, text) => {
-    return (dispatch, getState) => {
-        let headers = {"Content-Type":"application/json"};
-        let body = JSON.stringify({text});
-        let postID = getState().posts[id].id;
-        return fetch(`/api/posts/${postID}/`, {headers, method: "PUT", body}).then(res=>res.json()).then(post=>{
-            return dispatch({
-                type:'UPDATE_POST',
-                post,
-                id
-            })
-        })
-    }
-}
-export const deletePost = id => {
-    return (dispatch, getState) => {
-        let headers = {"Content-Type":"application/json"};
-        let postID = getState().posts[id].id;
-        return fetch(`/api/posts/${postID}/`, {headers, method: "DELETE"}).then(res=>{
-            if(res.ok){
-                return dispatch({
-                    type:'DELETE_POST',
-                    id
-                })
-            }
-            
-        })
-    }
-}
-
 export const fetchPosts = () => {
-    return dispatch => {
-        let headers = {
-            "Content-Type": "application/json"
-        };
-        return fetch("/api/notes/", {headers,}).then(res => res.json()).then(posts => {
-            return dispatch({
-                type: 'FETCH_POSTS',
-                posts
+    return (dispatch, getState) => {
+      let headers = {"Content-Type": "application/json"};
+      let {token} = getState().auth;
+  
+      if (token) {
+        headers["Authorization"] = `Token ${token}`;
+      }
+  
+      return fetch("/api/posts/", {headers, })
+        .then(res => {
+          if (res.status < 500) {
+            return res.json().then(data => {
+              return {status: res.status, data};
             })
+          } else {
+            console.log("Server Error!");
+            throw res;
+          }
+        })
+        .then(res => {
+          if (res.status === 200) {
+            return dispatch({type: 'FETCH_POSTS', posts: res.data});
+          } else if (res.status === 401 || res.status === 403) {
+            dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
+            throw res.data;
+          }
         })
     }
-}
+  }
+  
+  export const addPost = text => {
+    return (dispatch, getState) => {
+      let headers = {"Content-Type": "application/json"};
+      let {token} = getState().auth;
+  
+      if (token) {
+        headers["Authorization"] = `Token ${token}`;
+      }
+  
+      let body = JSON.stringify({text, });
+      return fetch("/api/posts/", {headers, method: "POST", body})
+        .then(res => {
+          if (res.status < 500) {
+            return res.json().then(data => {
+              return {status: res.status, data};
+            })
+          } else {
+            console.log("Server Error!");
+            throw res;
+          }
+        })
+        .then(res => {
+          if (res.status === 201) {
+            return dispatch({type: 'ADD_POST', note: res.data});
+          } else if (res.status === 401 || res.status === 403) {
+            dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
+            throw res.data;
+          }
+        })
+    }
+  }
+  
+  export const updatePost = (index, text) => {
+    return (dispatch, getState) => {
+  
+      let headers = {"Content-Type": "application/json"};
+      let {token} = getState().auth;
+  
+      if (token) {
+        headers["Authorization"] = `Token ${token}`;
+      }
+  
+      let body = JSON.stringify({text, });
+      let postId = getState().notes[index].id;
+  
+      return fetch(`/api/posts/${postId}/`, {headers, method: "PUT", body})
+        .then(res => {
+          if (res.status < 500) {
+            return res.json().then(data => {
+              return {status: res.status, data};
+            })
+          } else {
+            console.log("Server Error!");
+            throw res;
+          }
+        })
+        .then(res => {
+          if (res.status === 200) {
+            return dispatch({type: 'UPDATE_POST', post: res.data, index});
+          } else if (res.status === 401 || res.status === 403) {
+            dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
+            throw res.data;
+          }
+        })
+    }
+  }
+  
+  export const deletePost = index => {
+    return (dispatch, getState) => {
+  
+      let headers = {"Content-Type": "application/json"};
+      let {token} = getState().auth;
+  
+      if (token) {
+        headers["Authorization"] = `Token ${token}`;
+      }
+  
+      let postId = getState().posts[index].id;
+  
+      return fetch(`/api/notes/${postId}/`, {headers, method: "DELETE"})
+        .then(res => {
+          if (res.status === 204) {
+            return {status: res.status, data: {}};
+          } else if (res.status < 500) {
+            return res.json().then(data => {
+              return {status: res.status, data};
+            })
+          } else {
+            console.log("Server Error!");
+            throw res;
+          }
+        })
+        .then(res => {
+          if (res.status === 204) {
+            return dispatch({type: 'DELETE_POST', index});
+          } else if (res.status === 401 || res.status === 403) {
+            dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
+            throw res.data;
+          }
+        })
+    }
+  }

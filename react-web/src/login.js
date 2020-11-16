@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -7,84 +7,90 @@ import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import swal from 'sweetalert';
 import { Grid } from '@material-ui/core';
 import {connect} from "react-redux";
 import {auth} from "./actions"
 import {Redirect} from "react-router-dom";
+import Copyright from "./components/Copyright"
 
-function loginAttempt(evt,login) {
-  evt.preventDefault();
-  let uname = document.getElementById('username').value;
-  let passwd = document.getElementById('password').value;
-  
-  // TODO : Fetch CSRF Token from server
+// const useStyles = makeStyles((theme) => ({
+//   paper: {
+//     marginTop: theme.spacing(8),
+//     display: 'flex',
+//     flexDirection: 'column',
+//     alignItems: 'center',
+//   },
+//   avatar: {
+//     margin: theme.spacing(1),
+//     backgroundColor: theme.palette.secondary.main,
+//   },
+//   form: {
+//     width: '100%',
+//     marginTop: theme.spacing(1),
+//   },
+//   submit: {
+//     margin: theme.spacing(3, 0, 2),
+//   },
+// }));
 
-
-  // Regex Pattern Listener
-  //const mailPatt = /^[a-zA-Z0-9.]+@\D+$/g;
-  const passwdPatt = /^\S{8,}$/g;
-
-  // Input Validation
-  if(uname!==null && passwdPatt.exec(passwd)!==null)
-    login(uname,passwd);
+class SignIn extends Component {
+  loginAttempt = (evt) => {
+    evt.preventDefault();
+    let uname = document.getElementById('username').value;
+    let passwd = document.getElementById('password').value;
     
-  else
-    return swal('Unsuccessful','Incorrect username or password','error');
-}
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://github.com/Accelerator-One">
-        Unillege
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%',
-    marginTop: theme.spacing(1),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
-
-function SignIn(props) {
-   console.log(props);
-  const classes = useStyles();
-  if(props.isAuthenticated) {
-    return <Redirect to="/"/>
+    // TODO : Fetch CSRF Token from server
+  
+  
+    // Regex Pattern Listener
+    //const mailPatt = /^[a-zA-Z0-9.]+@\D+$/g;
+    const passwdPatt = /^\S{8,}$/g;
+  
+    // Input Validation
+    // if(uname!==null && passwdPatt.exec(passwd)!==null)
+           
+    // else
+    //   return swal('Unsuccessful','Incorrect username or password','error');
   }
+  // Copyright = () => {
+  //   return (
+  //     <Typography variant="body2" color="textSecondary" align="center">
+  //       {'Copyright © '}
+  //       <Link color="inherit" href="https://github.com/Accelerator-One">
+  //         Unillege
+  //       </Link>{' '}
+  //       {new Date().getFullYear()}
+  //       {'.'}
+  //     </Typography>
+  //   );
+  // }
+  state = {
+    username:"",
+    password: ""
+  }
+  onSubmit = e => {
+    e.preventDefault()
+    this.props.login(this.state.username, this.state.password);
+  }
+  render(){
+    if(this.props.isAuthenticated) {
+      return <Redirect to="/"/>
+    }
+    // const classes = useStyles();
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
+      <div >
+        <Avatar >
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
           Login
         </Typography>
-        <form className={classes.form} noValidate onSubmit={evt=>loginAttempt(evt, props.login)}>
+        <form onSubmit={this.onSubmit}  noValidate>
           <TextField
             variant="outlined"
             margin="normal"
@@ -95,6 +101,7 @@ function SignIn(props) {
             name="username"
             autoComplete="username"
             autoFocus
+            onChange={e => this.setState({username: e.target.value})}
           />
           <TextField 
             variant="outlined"
@@ -106,6 +113,7 @@ function SignIn(props) {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={e => this.setState({password: e.target.value})}
           />
           
           <Button
@@ -113,7 +121,7 @@ function SignIn(props) {
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
+            
           >
             Submit
           </Button>
@@ -129,8 +137,15 @@ function SignIn(props) {
       <Box mt={8}>
         <Copyright />
       </Box>
+      {this.props.errors.length > 0 && (
+        <ul>
+          {this.props.errors.map(error => (
+            <li key={error.field}>{error.message}</li>
+          ))}
+        </ul>
+      )}
     </Container>
-  );
+  )}
 }
 
 const mapStateToProps = state => {
