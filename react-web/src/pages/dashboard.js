@@ -26,9 +26,9 @@ import { posts, auth } from "../actions";
 import { Switch, Route, NavLink } from "react-router-dom";
 
 
-import Alumni from "./Alumni";
-import Events from "./Events";
-import Forum from "./Forum";
+import Alumni from "./alumni";
+import Events from "./events";
+import Forum from "./forum";
 import swal from "sweetalert";
 
 const drawerWidth = 240;

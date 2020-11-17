@@ -1,37 +1,47 @@
 import React, { Component } from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { createStore, applyMiddleware } from "redux";
 import { Provider, connect } from "react-redux";
-import DashBoard from "./pages/Dashboard";
+import thunk from "redux-thunk";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+
+// UI Components
+import DashBoard from "./pages/dashboard";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
+
+// Redux-config
 import unillegeApp from "./reducers";
 import { auth } from "./actions";
 
+// Create store and apply middleware
 let store = createStore(unillegeApp, applyMiddleware(thunk));
 
 class RootContainerComponent extends Component {
+
   componentDidMount() {
     this.props.loadUser();
   }
+
   PrivateRoute = ({ component: ChildComponent, ...rest }) => {
     return (
       <Route
         {...rest}
         render={(props) => {
-          if (this.props.auth.isLoading) {
+
+          if (this.props.auth.isLoading)
             return <em>Loading...</em>;
-          } else if (!this.props.auth.isAuthenticated) {
+          else if (!this.props.auth.isAuthenticated)
             return <Redirect to="/login" />;
-          } else {
-            return <ChildComponent {...props} />;
-          }
+          
+          return <ChildComponent {...props} />;
+
         }}
       />
     );
   };
+
   render() {
+    
     let { PrivateRoute } = this;
     return (
       <BrowserRouter>
