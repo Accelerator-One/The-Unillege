@@ -14,7 +14,7 @@ import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Comment from './comment';
+import Comment from './Comment';
 import List from '@material-ui/core/List';
 import TextField from '@material-ui/core/TextField';
 import SendIcon from '@material-ui/icons/Send';
