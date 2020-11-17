@@ -8,13 +8,14 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { auth } from "../actions";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import Copyright from "../components/Copyright";
 
 class Register extends Component {
+  
   state = {
     username: "",
     password: "",
@@ -24,20 +25,49 @@ class Register extends Component {
     e.preventDefault();
     this.props.register(this.state.username, this.state.password);
   };
+
   render() {
+
     if (this.props.isAuthenticated) {
       return <Redirect to="/" />
     }
+
+    const styles = {
+        paper: {
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center'
+        },
+        avatar: {
+          margin: 'auto'
+        },
+        form: {
+          width: '100%',
+          marginTop: '12vh',
+        },
+        submit: {
+          margin: '12vh',
+        }
+    }
+
     return (
       <Container component="main" maxWidth="xs">
+
+        <br/><br/>
+        <br/><br/>
+
         <CssBaseline />
-        <div>
-          <Avatar>
-            <LockOutlinedIcon />
+        <div className={styles.paper}>
+          <Avatar className={styles.avatar} color='primary'>
+            <LockOutlinedIcon color='primary'/>
           </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign up
+          <br/>
+          <Typography component="h1" variant="h5" style={{ 'textAlign':'center' }} >
+            REGISTER
           </Typography>
+          <br/>
+          
           <form noValidate onSubmit={this.onSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
@@ -89,9 +119,11 @@ class Register extends Component {
                 />
               </Grid>
             </Grid>
+            <br/><br/>
             <Button type="submit" fullWidth variant="contained" color="primary">
-              Sign Up
+              REGISTER
             </Button>
+            <br/><br/>
             <Grid container justify="flex-end">
               <Grid item>
                 <Link href="../" variant="body2">
@@ -100,6 +132,7 @@ class Register extends Component {
               </Grid>
             </Grid>
           </form>
+        
         </div>
         <Box mt={5}>
           {this.props.errors.length > 0 && (
@@ -109,6 +142,9 @@ class Register extends Component {
               ))}
             </ul>
           )}
+        </Box>
+        <Box mt={8}>
+          <Copyright />
         </Box>
       </Container>
     );
