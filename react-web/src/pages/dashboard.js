@@ -25,7 +25,7 @@ import { posts, auth } from "../actions";
 
 import { Switch, Route, NavLink } from "react-router-dom";
 
-import Dashboard from "../components/dashboard";
+
 import Alumni from "./Alumni";
 import Events from "./Events";
 import Forum from "./Forum";
@@ -95,7 +95,7 @@ const drawerWidth = 240;
 //   },
 // }));
 
-class MiniDrawer extends Component {
+class Dashboard extends Component {
   componentDidMount() {
     this.props.fetchNotes();
 }
@@ -113,135 +113,111 @@ class MiniDrawer extends Component {
   //   setOpen(false);
   // };
   render(){
+   
   return (
-    
-      // <CssBaseline />
-      // <AppBar
-      //   position="fixed"
-      //   className={clsx(classes.appBar, {
-      //     [classes.appBarShift]: open,
-      //   })}
-      // >
-      //   <Toolbar>
-      //     <IconButton
-      //       color="inherit"
-      //       aria-label="open drawer"
-      //       onClick={handleDrawerOpen}
-      //       edge="start"
-      //       className={clsx(classes.menuButton, {
-      //         [classes.hide]: open,
-      //       })}
-      //     >
-      //       <MenuIcon />
-      //     </IconButton>
-      //     <Typography variant="h6" noWrap>
-      //       UNILLEGE
-      //     </Typography>
-      //   </Toolbar>
-      // </AppBar>
-      // <Drawer
-      //   variant="permanent"
-      //   className={clsx(classes.drawer, {
-      //     [classes.drawerOpen]: open,
-      //     [classes.drawerClose]: !open,
-      //   })}
-      //   classes={{
-      //     paper: clsx({
-      //       [classes.drawerOpen]: open,
-      //       [classes.drawerClose]: !open,
-      //     }),
-      //   }}
-      // >
-      //   <div className={classes.toolbar}>
-      //     <IconButton onClick={handleDrawerClose}>
-      //       {theme.direction === "rtl" ? (
-      //         <ChevronRightIcon />
-      //       ) : (
-      //         <ChevronLeftIcon />
-      //       )}
-      //     </IconButton>
-      //   </div>
+    <div>
+      <CssBaseline />
+      <AppBar
+        position="fixed"
+        
+      >
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            
+            edge="start"
+           
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" noWrap>
+            UNILLEGE
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        variant="permanent"
+        
+      >
+        <div >
+          <IconButton >
+            
+          </IconButton>
+        </div>
 
-      //   <Divider />
-      //   <List>
-      //     <ListItem button key="dashboard">
-      //       <ListItemIcon>
-      //         <NavLink to="/">
-      //           <DashboardIcon />
-      //         </NavLink>
-      //       </ListItemIcon>
-      //       <NavLink to="/">
-      //         <ListItemText primary="Dashboard" />
-      //       </NavLink>
-      //     </ListItem>
+        <Divider />
+        <List>
+          <ListItem button key="dashboard">
+            <ListItemIcon>
+              <NavLink to="/">
+                <DashboardIcon />
+              </NavLink>
+            </ListItemIcon>
+            <NavLink to="/">
+              <ListItemText primary="Dashboard" />
+            </NavLink>
+          </ListItem>
 
-      //     <ListItem button key="events">
-      //       <ListItemIcon>
-      //         <NavLink to="/events">
-      //           <EventIcon />
-      //         </NavLink>
-      //       </ListItemIcon>
-      //       <NavLink to="/events">
-      //         <ListItemText primary="Events" />
-      //       </NavLink>
-      //     </ListItem>
+          <ListItem button key="events">
+            <ListItemIcon>
+              <NavLink to="/events">
+                <EventIcon />
+              </NavLink>
+            </ListItemIcon>
+            <NavLink to="/events">
+              <ListItemText primary="Events" />
+            </NavLink>
+          </ListItem>
 
-      //     <ListItem button key="posts">
-      //       <ListItemIcon>
-      //         <NavLink to="/forum">
-      //           <ForumIcon />
-      //         </NavLink>
-      //       </ListItemIcon>
-      //       <NavLink to="/forum">
-      //         <ListItemText primary="Forum" />
-      //       </NavLink>
-      //     </ListItem>
-      //   </List>
-      //   <Divider />
-      //   <List>
-      //     <ListItem button key="alumni">
-      //       <ListItemIcon>
-      //         <NavLink to="/alumni">
-      //           <PersonIcon />
-      //         </NavLink>
-      //       </ListItemIcon>
-      //       <NavLink to="/alumni">
-      //         <ListItemText primary="Alumni" />
-      //       </NavLink>
-      //     </ListItem>
+          <ListItem button key="posts">
+            <ListItemIcon>
+              <NavLink to="/forum">
+                <ForumIcon />
+              </NavLink>
+            </ListItemIcon>
+            <NavLink to="/forum">
+              <ListItemText primary="Forum" />
+            </NavLink>
+          </ListItem>
+        </List>
+        <Divider />
+        <List>
+          <ListItem button key="alumni">
+            <ListItemIcon>
+              <NavLink to="/alumni">
+                <PersonIcon />
+              </NavLink>
+            </ListItemIcon>
+            <NavLink to="/alumni">
+              <ListItemText primary="Alumni" />
+            </NavLink>
+          </ListItem>
 
-      //     <ListItem
-      //       button
-      //       key="logout"
-      //       onClick={this.props.logout}
-      //     >
-      //       <ListItemIcon>
-      //         <ExitToAppIcon style={{ color: "#3f51b5" }} />
-      //       </ListItemIcon>
-      //       <ListItemText primary="Logout" style={{ color: "#3f51b5" }} />
-      //     </ListItem>
-      //   </List>
-      // </Drawer>
-      // <main className={classes.content}>
-      //   <div className={classes.toolbar} />
+          <ListItem
+            button
+            key="logout"
+            onClick={this.props.logout}
+          >
+            <ListItemIcon>
+              <ExitToAppIcon style={{ color: "#3f51b5" }} />
+            </ListItemIcon>
+            <ListItemText primary="Logout" style={{ color: "#3f51b5" }} />
+          </ListItem>
+        </List>
+      </Drawer>
+      <main >
+        <div  />
 
-      //   <Switch>
-      //     <Route path="/events" component={Events}></Route>
-      //     <Route path="/forum" component={Forum}></Route>
-      //     <Route path="/alumni" component={Alumni}></Route>
-      //     <Route path="/" component={Dashboard}></Route>
-      //   </Switch>
-      // </main>
-      <div>
-      <table>
-      <tbody>
-          {this.props.posts.map((post, id) => (
-              <tr key={`post_${post.id}`}>
-                  <td>{post.content}</td>
-              </tr>
-          ))}
-      </tbody>
-  </table>
+        <Switch>
+          <Route path="/events" component={Events}></Route>
+          <Route path="/forum" component={Forum}></Route>
+          <Route path="/alumni" component={Alumni}></Route>
+          <Route path="/" component={Dashboard}></Route>
+        </Switch>
+      </main>
+      
+      
     </div>
   )}
 }
@@ -271,4 +247,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MiniDrawer);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
