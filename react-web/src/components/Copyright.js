@@ -4,9 +4,9 @@ import Link from '@material-ui/core/Link';
 
 export default function Copyright(){
     return (
-        <Typography variant="body2" color="textSecondary" align="center">
+      <Typography variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
-        <Link color="inherit" href="https://github.com/Accelerator-One">
+        <Link color="inherit" href="https://github.com/luthra2059/The-Unillege">
           Unillege
         </Link>{' '}
         {new Date().getFullYear()}
