@@ -22,4 +22,18 @@ class Vote(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     
+class Alumni(models.Model):
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    company = models.CharField(max_length=50)
+    story = models.TextField(default="this is how i got placed!")
+    image = models.ImageField(upload_to='images/', default='images/default2.jpg')
+    
+class VoteAlumni(models.Model):
+    post = models.ForeignKey(Alumni, on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    
+class Events(models.Model):
+    title = models.CharField(max_length=100)
+    event_details = models.TextField()
+    
     
