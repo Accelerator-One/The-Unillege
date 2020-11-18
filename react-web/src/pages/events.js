@@ -22,7 +22,7 @@ export default function Events(props) {
 
   return (
     <div className={classes.root}>
-
+      { 
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -40,7 +40,7 @@ export default function Events(props) {
           </blockquote>
         </AccordionDetails>
       </Accordion>
-
+      }
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
