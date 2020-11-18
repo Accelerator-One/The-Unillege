@@ -131,7 +131,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'react-web/build/static')
+    os.path.join(BASE_DIR,'react-web/build/static'),
+    os.path.join(BASE_DIR, 'media/images')
 ]
 
 REST_FRAMEWORK = {
@@ -149,3 +150,6 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:8080',
  )
 CORS_ORIGIN_ALLOW_ALL = True
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
