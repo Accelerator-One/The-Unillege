@@ -25,7 +25,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {
   Switch,
   Route,
-  NavLink
+  NavLink,
 } from 'react-router-dom';
 
 import DashboardFeed from './feed';
@@ -221,12 +221,12 @@ export default function DashBoardView({props}) {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-
+      
         <Switch>
-          <Route path="/events" component={Events}></Route>
-          <Route path="/forum" component={Forum}></Route>
-          <Route path="/alumni" component={Alumni}></Route>
-          <Route path="/" component={DashboardFeed}></Route>
+          <Route exact path="/events" render={(prop)=>(<Events {...prop} />)}/>
+          <Route path="/forum" render={(prop)=>(<Forum {...prop}/>)}/>
+          <Route path="/alumni" render={(prop)=>(<Alumni {...prop}/>)}/>
+          <Route path="/" render={(prop)=>(<DashboardFeed {...prop} use = {props}/>)}/>
         </Switch>
         
       </main>

@@ -135,13 +135,6 @@ class Register extends Component {
         
         </div>
         <Box mt={5}>
-          {this.props.errors.length > 0 && (
-            <ul>
-              {this.props.errors.map((error) => (
-                <li key={error.field}>{error.message}</li>
-              ))}
-            </ul>
-          )}
         </Box>
         <Box mt={8}>
           <Copyright />
