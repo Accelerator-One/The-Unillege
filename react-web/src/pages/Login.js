@@ -60,6 +60,13 @@ class Login extends Component {
           <Typography component="h1" variant="h5" style={{ 'textAlign':'center' }}>
             LOGIN
           </Typography>
+          {this.props.errors.length > 0 && (
+            <h4 style={{'textAlign':'center', 'color':'red' }}>
+              {this.props.errors.map((error) => (
+                <span key={error.field}>{error.message}</span>
+              ))}
+              </h4>
+          )}
           <form onSubmit={this.onSubmit} className={styles.form} noValidate>
             <TextField
               variant="outlined"
@@ -107,13 +114,6 @@ class Login extends Component {
         <Box mt={8}>
           <Copyright />
         </Box>
-        {this.props.errors.length > 0 && (
-          <ul>
-            {this.props.errors.map((error) => (
-              <li key={error.field}>{error.message}</li>
-            ))}
-          </ul>
-        )}
       </Container>
     );
   }

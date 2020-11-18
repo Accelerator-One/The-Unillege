@@ -113,109 +113,112 @@ class Dashboard extends Component {
   render(){
    
   return (
-    <div>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
+    // <div>
+    //   <CssBaseline />
+    //   <AppBar
+    //     position="fixed"
         
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
+    //   >
+    //     <Toolbar>
+    //       <IconButton
+    //         color="inherit"
+    //         aria-label="open drawer"
             
-            edge="start"
+    //         edge="start"
            
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            UNILLEGE
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
+    //       >
+    //         <MenuIcon />
+    //       </IconButton>
+    //       <Typography variant="h6" noWrap>
+    //         UNILLEGE
+    //       </Typography>
+    //     </Toolbar>
+    //   </AppBar>
+    //   <Drawer
+    //     variant="permanent"
         
-      >
-        <div >
-          <IconButton >
+    //   >
+    //     <div >
+    //       <IconButton >
             
-          </IconButton>
-        </div>
+    //       </IconButton>
+    //     </div>
 
-        <Divider />
-        <List>
-          <ListItem button key="dashboard">
-            <ListItemIcon>
-              <NavLink to="/">
-                <DashboardIcon />
-              </NavLink>
-            </ListItemIcon>
-            <NavLink to="/">
-              <ListItemText primary="Dashboard" />
-            </NavLink>
-          </ListItem>
+    //     <Divider />
+    //     <List>
+    //       <ListItem button key="dashboard">
+    //         <ListItemIcon>
+    //           <NavLink to="/">
+    //             <DashboardIcon />
+    //           </NavLink>
+    //         </ListItemIcon>
+    //         <NavLink to="/">
+    //           <ListItemText primary="Dashboard" />
+    //         </NavLink>
+    //       </ListItem>
 
-          <ListItem button key="events">
-            <ListItemIcon>
-              <NavLink to="/events">
-                <EventIcon />
-              </NavLink>
-            </ListItemIcon>
-            <NavLink to="/events">
-              <ListItemText primary="Events" />
-            </NavLink>
-          </ListItem>
+    //       <ListItem button key="events">
+    //         <ListItemIcon>
+    //           <NavLink to="/events">
+    //             <EventIcon />
+    //           </NavLink>
+    //         </ListItemIcon>
+    //         <NavLink to="/events">
+    //           <ListItemText primary="Events" />
+    //         </NavLink>
+    //       </ListItem>
 
-          <ListItem button key="posts">
-            <ListItemIcon>
-              <NavLink to="/forum">
-                <ForumIcon />
-              </NavLink>
-            </ListItemIcon>
-            <NavLink to="/forum">
-              <ListItemText primary="Forum" />
-            </NavLink>
-          </ListItem>
-        </List>
-        <Divider />
-        <List>
-          <ListItem button key="alumni">
-            <ListItemIcon>
-              <NavLink to="/alumni">
-                <PersonIcon />
-              </NavLink>
-            </ListItemIcon>
-            <NavLink to="/alumni">
-              <ListItemText primary="Alumni" />
-            </NavLink>
-          </ListItem>
+    //       <ListItem button key="posts">
+    //         <ListItemIcon>
+    //           <NavLink to="/forum">
+    //             <ForumIcon />
+    //           </NavLink>
+    //         </ListItemIcon>
+    //         <NavLink to="/forum">
+    //           <ListItemText primary="Forum" />
+    //         </NavLink>
+    //       </ListItem>
+    //     </List>
+    //     <Divider />
+    //     <List>
+    //       <ListItem button key="alumni">
+    //         <ListItemIcon>
+    //           <NavLink to="/alumni">
+    //             <PersonIcon />
+    //           </NavLink>
+    //         </ListItemIcon>
+    //         <NavLink to="/alumni">
+    //           <ListItemText primary="Alumni" />
+    //         </NavLink>
+    //       </ListItem>
 
-          <ListItem
-            button
-            key="logout"
-            onClick={this.props.logout}
-          >
-            <ListItemIcon>
-              <ExitToAppIcon style={{ color: "#3f51b5" }} />
-            </ListItemIcon>
-            <ListItemText primary="Logout" style={{ color: "#3f51b5" }} />
-          </ListItem>
-        </List>
-      </Drawer>
-      <main >
-        <div  />
+    //       <ListItem
+    //         button
+    //         key="logout"
+    //         onClick={this.props.logout}
+    //       >
+    //         <ListItemIcon>
+    //           <ExitToAppIcon style={{ color: "#3f51b5" }} />
+    //         </ListItemIcon>
+    //         <ListItemText primary="Logout" style={{ color: "#3f51b5" }} />
+    //       </ListItem>
+    //     </List>
+    //   </Drawer>
+    //   <main >
+    //     <div  />
 
-        <Switch>
-          <Route path="/events" component={Events}></Route>
-          <Route path="/forum" component={Forum}></Route>
-          <Route path="/alumni" component={Alumni}></Route>
-          <Route path="/" component={Dashboard}></Route>
-        </Switch>
-      </main>
+    //     <Switch>
+    //       <Route path="/events" component={Events}></Route>
+    //       <Route path="/forum" component={Forum}></Route>
+    //       <Route path="/alumni" component={Alumni}></Route>
+    //       <Route path="/" component={Dashboard}></Route>
+    //     </Switch>
+    //   </main>
       
       
+    // </div>
+    <div>
+     Congratulation you are logged in!
     </div>
   )}
 }
