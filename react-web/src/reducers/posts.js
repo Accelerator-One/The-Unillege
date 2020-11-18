@@ -18,7 +18,7 @@ export default function posts(state = initialState, action) {
             postList.splice(action.id, 1);
             return postList;
         case 'FETCH_POSTS':
-            return [...state, ...action.notes];
+            return [...state, ...action.posts];
         default:
             return state;
     }

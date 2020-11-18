@@ -6,10 +6,11 @@ import DashboardView from './dashboardView';
 class Dashboard extends Component {
   
   componentDidMount() {
-    this.props.fetchNotes();
+    this.props.fetchPosts();
   }
 
   render(){ 
+    console.log(this.props.posts);
   return <DashboardView props={this.props}/>;
   }
 }

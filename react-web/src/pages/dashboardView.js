@@ -29,9 +29,9 @@ import {
 } from 'react-router-dom';
 
 import DashboardFeed from './feed';
-import Alumni from "./alumni";
-import Events from "./events";
-import Forum from "./forum";
+import Alumni from "./Alumni";
+import Events from "./Events";
+import Forum from "./Forum";
 
 const drawerWidth = 240;
 
