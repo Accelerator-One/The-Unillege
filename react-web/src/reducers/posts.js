@@ -1,8 +1,12 @@
+// Initial State
 const initialState = [];
 
-export default function posts(state=initialState, action){
+// Posts reducer with defined actions
+export default function posts(state = initialState, action) {
+
     let postList = state.slice();
-    switch (action.type){
+
+    switch (action.type) {
         case 'ADD_POST':
             return [...state, action.post];
         case 'UPDATE_NOTE':
@@ -14,7 +18,7 @@ export default function posts(state=initialState, action){
             postList.splice(action.id, 1);
             return postList;
         case 'FETCH_POSTS':
-            return [...state, ...action.notes];
+            return [...state, ...action.posts];
         default:
             return state;
     }
