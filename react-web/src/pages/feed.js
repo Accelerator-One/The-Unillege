@@ -1,4 +1,5 @@
 import React from 'react';
+import Grid from '@material-ui/core/Grid';
 import Post from '../components/post';
 import Grid from '@material-ui/core/Grid';
 
@@ -17,7 +18,6 @@ class DashboardFeed extends React.Component {
                     <Post spacing={10} key={post.id} post={post.title} user_id={post.author_id} timestamp={post.created_on} image='https://live.staticflickr.com/106/299768558_02779187fe_b.jpg' votes='12' />
                 ))
             }
-                
             </Grid>
         );
     }
