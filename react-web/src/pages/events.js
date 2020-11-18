@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleAccordion(props) {
+export default function Events(props) {
   
   const classes = useStyles();
 

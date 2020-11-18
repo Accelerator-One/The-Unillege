@@ -10,7 +10,6 @@ class Dashboard extends Component {
   }
 
   render(){ 
-    console.log(this.props.posts);
   return <DashboardView props={this.props}/>;
   }
 }

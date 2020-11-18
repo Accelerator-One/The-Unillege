@@ -22,6 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api/', include('UserManagement.urls')),
     url(r'^api/auth/', include('knox.urls')),
-    re_path(r'^', TemplateView.as_view(template_name='index.html')),
-    # path('posts/', include('posts.urls'))
+    re_path(r'^', TemplateView.as_view(template_name='index.html'))
 ]

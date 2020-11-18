@@ -11,7 +11,12 @@ class DashboardFeed extends React.Component {
     render(){
         return (
             <>
-                <Post post_id='1' post='Hola Amigos' user_id='Aditya Thakur' timestamp='Nov 8,2020' image='https://live.staticflickr.com/106/299768558_02779187fe_b.jpg' votes='12' />
+            {
+                this.props.use.posts.map(post=>(
+                    <Post post_id={post.id} post={post.title} user_id={post.author_id} timestamp={post.created_on} image='https://live.staticflickr.com/106/299768558_02779187fe_b.jpg' votes='12' />
+                ))
+            }
+                
             </>
         );
     }
