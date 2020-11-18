@@ -12,13 +12,19 @@ class DashboardFeed extends React.Component {
 
     render(){
         return (
-            <Grid container spacing={4} style={{ 'padding':'30px' }}>
+           
+            <Grid container spacing={4} style={{ 'padding':'10px' }}>
             {
+                
                 this.props.use.posts.map(post=>(
-                    <Post spacing={10} key={post.id} post={post.title} user_id={post.author_id} timestamp={post.created_on} image='https://live.staticflickr.com/106/299768558_02779187fe_b.jpg' votes='12' />
+                    
+                    <Post spacing={4} key={post.id} post={post.title} user_id={post.author_id} timestamp={post.created_on} image={post.image} votes='12' />
+                    
                 ))
             }
             </Grid>
+          
+            
         );
     }
 }

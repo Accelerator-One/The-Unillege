@@ -12,6 +12,7 @@ psycopg2 = "*"
 django-filter = "*"
 django-cors-headers = "*"
 django-rest-knox = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.9"
