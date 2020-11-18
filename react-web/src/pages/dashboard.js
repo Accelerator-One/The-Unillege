@@ -5,9 +5,9 @@ import DashboardView from './dashboardView';
 
 class Dashboard extends Component {
   
-  componentDidMount() {
-    this.props.fetchNotes();
-  }
+  // componentDidMount() {
+  //   this.props.fetchNotes();
+  // }
 
   render(){ 
   return <DashboardView props={this.props}/>;
