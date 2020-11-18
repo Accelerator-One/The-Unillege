@@ -7,6 +7,7 @@ from rest_framework import viewsets, permissions
 class PostView(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated,]
     serializer_class = PostSerializer
+    # queryset = Post.objects.all()
     def get_queryset(self):
         return self.request.user.posts.all()
     def perform_create(self, serializer):
