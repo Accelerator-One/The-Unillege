@@ -96,9 +96,7 @@ const drawerWidth = 240;
 // }));
 
 class Dashboard extends Component {
-  componentDidMount() {
-    this.props.fetchNotes();
-}
+
   // const classes = useStyles();
   // const theme = useTheme();
   // const [open, setOpen] = React.useState(false);

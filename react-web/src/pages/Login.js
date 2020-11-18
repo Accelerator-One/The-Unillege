@@ -5,11 +5,9 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Box from "@material-ui/core/Box";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import Typography from "@material-ui/core/Typography";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import swal from "sweetalert";
 import { Grid } from "@material-ui/core";
 import { connect } from "react-redux";
 import { auth } from "../actions";
@@ -26,15 +24,23 @@ class Login extends Component {
     this.props.login(this.state.username, this.state.password);
   };
   render() {
+
     const styles = {
       paper: {
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        textAlign: 'center'
       },
-
+      avatar: {
+        margin: 'auto'
+      },
       form: {
-        width: "100%",
+        width: '100%',
+        marginTop: '12vh',
+      },
+      submit: {
+        margin: '12vh',
       },
     };
     if (this.props.isAuthenticated) {
@@ -43,15 +49,18 @@ class Login extends Component {
 
     return (
       <Container component="main" maxWidth="xs">
+        <br/><br/>
+        <br/><br/>
         <CssBaseline />
-        <div>
-          <Avatar>
-            <LockOutlinedIcon />
+        <div className={styles.paper}>
+          <Avatar className={styles.avatar} color='primary'>
+            <AccountCircleOutlinedIcon color='primary' />
           </Avatar>
-          <Typography component="h1" variant="h5">
-            Login
+          <br/>
+          <Typography component="h1" variant="h5" style={{ 'textAlign':'center' }}>
+            LOGIN
           </Typography>
-          <form onSubmit={this.onSubmit} noValidate>
+          <form onSubmit={this.onSubmit} className={styles.form} noValidate>
             <TextField
               variant="outlined"
               margin="normal"
@@ -77,9 +86,15 @@ class Login extends Component {
               onChange={(e) => this.setState({ password: e.target.value })}
             />
 
+            <br/><br/>
+
             <Button type="submit" fullWidth variant="contained" color="primary">
               Submit
             </Button>
+
+            <br/><br/>
+            <br/><br/>
+
             <Grid container justify="flex-end">
               <Grid item>
                 <Link href="./register" variant="body2">
