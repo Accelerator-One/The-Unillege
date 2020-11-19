@@ -24,15 +24,15 @@ class VoteView(viewsets.ModelViewSet):
     
 class AlumniView(viewsets.ModelViewSet):
     serializer_class = AlumniSerializer
-    querryset = Alumni.objects.all()  
+    queryset = Alumni.objects.all()  
 
 class VoteAlumniView(viewsets.ModelViewSet):
     serializer_class = VoteAlumniSerializer
-    querryset = VoteAlumni.objects.all()
+    queryset = VoteAlumni.objects.all()
     
 class EventsView(viewsets.ModelViewSet):
     serializer_class = EventsSerializer
-    querryset = Events.objects.all()
+    queryset = Events.objects.all()
 
 
     

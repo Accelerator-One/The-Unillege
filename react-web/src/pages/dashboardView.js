@@ -249,9 +249,9 @@ export default function DashBoardView({props}) {
         <div className={classes.toolbar} />
       
         <Switch>
-          <Route exact path="/events" render={(prop)=>(<Events {...prop} />)}/>
+          <Route exact path="/events" render={(prop)=>(<Events {...prop} use = {props}/>)}/>
           <Route path="/forum" render={(prop)=>(<Forum {...prop}/>)}/>
-          <Route path="/alumni" render={(prop)=>(<Alumni {...prop}/>)}/>
+          <Route path="/alumni" render={(prop)=>(<Alumni {...prop} use = {props}/>)}/>
           <Route path="/resources" render={(prop)=>(<Resources {...prop}/>)}/>
           <Route path="/profile" render={(prop)=>(<Profile {...prop}/>)}/>
           <Route path="/" render={(prop)=>(<DashboardFeed {...prop} use = {props}/>)}/>
