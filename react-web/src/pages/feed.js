@@ -1,6 +1,6 @@
 import React from 'react';
-import Post from '../components/post';
 import Grid from '@material-ui/core/Grid';
+import Post from '../components/post';
 
 class DashboardFeed extends React.Component {
 
