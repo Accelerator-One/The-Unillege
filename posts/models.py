@@ -6,7 +6,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE, null=True)
+    author_name = models.ForeignKey(User,to_field='username', on_delete=models.CASCADE, null = True)
     image = models.ImageField(upload_to='images/', default='images/default.jpg')
     def __str__(self):
         return self.title
@@ -35,5 +35,8 @@ class VoteAlumni(models.Model):
 class Events(models.Model):
     title = models.CharField(max_length=100)
     event_details = models.TextField()
+    
+class Test(models.Model):
+    author_name = models.ForeignKey(User,to_field='username', on_delete=models.CASCADE, null = True)
     
     

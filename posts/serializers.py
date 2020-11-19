@@ -9,7 +9,7 @@ class PostSerializer(serializers.ModelSerializer):
             'title',
             'content',
             'created_on',
-            'author_id',
+            'author_name_id',
             'image'
         )
         model = Post
