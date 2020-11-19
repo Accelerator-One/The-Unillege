@@ -21,3 +21,12 @@ a {
 .MuiPaper-elevation1 {
   margin: 2vh;
 }
+
+.MuiCardContent-root,.MuiCardActions-root,.MuiCardHeader-root{
+  background-color: white;
+}
+
+.MuiCard-root {
+  box-shadow: none !important;
+  background-color: transparent !important;
+}

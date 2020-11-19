@@ -44,10 +44,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function RecipeReviewCard({post_id,post,user_id,timestamp,image,votes}) {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = React.useState({});
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
+  const handleExpandClick = (id) => {
+    if(id===post_id)
+      setExpanded({
+        ...expanded,
+        [post_id]:!expanded[post_id]
+      });
   };
 
   return (
@@ -96,16 +100,16 @@ export default function RecipeReviewCard({post_id,post,user_id,timestamp,image,v
         
         <IconButton
           className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
+            [classes.expandOpen]: expanded[post_id],
           })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
+          onClick={()=>handleExpandClick(post_id)}
+          aria-expanded={expanded[post_id]}
           aria-label="Load comments"
         >
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+      <Collapse in={expanded[post_id]} timeout="auto" unmountOnExit>
         <CardContent>
           <List>
                 <Comment comment_id='1' user_name='Shubham Luthra' post_id='1' comment='Hi!' timestamp='12 Nov, 2020' votes='2'/>

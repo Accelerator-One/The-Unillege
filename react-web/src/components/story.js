@@ -11,7 +11,6 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles((theme) => ({
@@ -37,12 +36,16 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function RecipeReviewCard({story_id,story,alumni,company,timestamp,image,votes}) {
+export default function RecipeReviewCard({story_id,story,alumni,company,image}) {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = React.useState({});
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
+  const handleExpandClick = (id) => {
+    if(id===story_id)
+      setExpanded({
+        ...expanded,
+        [story_id]:!expanded[story_id]
+      });
   };
 
   return (
@@ -64,25 +67,19 @@ export default function RecipeReviewCard({story_id,story,alumni,company,timestam
       }
       
       <CardActions disableSpacing>
-        
-        
-        <IconButton aria-label="like">
-          <FavoriteIcon />
-        </IconButton>
-        {votes}
 
         <IconButton
           className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
+            [classes.expandOpen]: expanded[story_id],
           })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
+          onClick={()=>handleExpandClick(story_id)}
+          aria-expanded={expanded[story_id]}
           aria-label="Load comments"
         >
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+      <Collapse in={expanded[story_id]} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography>
             {story}
