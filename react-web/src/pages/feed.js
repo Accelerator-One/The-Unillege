@@ -14,10 +14,10 @@ class DashboardFeed extends React.Component {
            
             <Grid container spacing={4} style={{ 'padding':'10px' }}>
             {
-                
+            
                 this.props.use.posts.map(post=>(
                     
-                    <Post spacing={4} key={post.id} post={post.title} user_id={post.author_id} timestamp={post.created_on} image={post.image} votes='12' />
+                    <Post spacing={4} key={post.id} post={post.title} user_id={post.author_name_id} timestamp={ new Date(post.created_on).toDateString()} image={post.image} votes='12' />
                     
                 ))
             }
