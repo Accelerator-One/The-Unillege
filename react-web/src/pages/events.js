@@ -23,42 +23,30 @@ export default function Events(props) {
   return (
     <div className={classes.root}>
       { 
-      <Accordion>
+        props.use.events.map(event => (
+          <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography className={classes.heading}> Diwali Celebration Notice </Typography>
+          <Typography className={classes.heading}> {event.title} </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Wishing you all a very Happy Diwali for year 2020.
+            {event.event_details}
           </Typography>
           <blockquote>
               &nbsp;
           </blockquote>
         </AccordionDetails>
       </Accordion>
+        ))
+      
       }
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-        >
-          <Typography className={classes.heading}> Unillege launched for students </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-          Get yourself acquainted with your college now! - A College Information Manager App
-          </Typography>
-          <blockquote>
-              &nbsp;
-          </blockquote>
-        </AccordionDetails>
-      </Accordion>
+      
 
     </div>
+    
   );
 }

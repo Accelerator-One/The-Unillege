@@ -34,15 +34,15 @@ class VoteSerializer(serializers.ModelSerializer):
         model = Vote
 class AlumniSerializer(serializers.ModelSerializer):
     class Meta:
-        fields: ('author', 'company', 'story', 'image')
+        fields = ('author', 'company', 'story', 'image')
         model = Alumni
         
 class VoteAlumniSerializer(serializers.ModelSerializer):
     class Meta:
-        fields: ('post', 'user')
+        fields = ('post', 'user')
         model = VoteAlumni
         
 class EventsSerializer(serializers.ModelSerializer):
     class Meta:
-        fields: ('title', 'event_details')
+        fields = ('title', 'event_details')
         model = Events
