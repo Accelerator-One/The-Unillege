@@ -22,6 +22,7 @@ import ForumIcon from '@material-ui/icons/Forum';
 import PersonIcon from '@material-ui/icons/Person';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import NotesIcon from '@material-ui/icons/Notes';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 import {
   Switch,
@@ -34,6 +35,7 @@ import Alumni from "./alumni";
 import Events from "./events";
 import Forum from "./forum";
 import Resources from "./resources";
+import Profile from "./profile";
 
 const drawerWidth = 240;
 
@@ -220,6 +222,17 @@ export default function DashBoardView({props}) {
             </NavLink>
           </ListItem>
 
+          <ListItem button key='profile'>
+            <ListItemIcon>
+              <NavLink to='/profile'>
+               <AccountCircleIcon/>
+              </NavLink>
+            </ListItemIcon>
+            <NavLink to='/profile'>
+              <ListItemText primary="Profile" />
+            </NavLink>
+          </ListItem>
+
           <ListItem button
             key="logout"
             onClick={props.logout}>
@@ -240,6 +253,7 @@ export default function DashBoardView({props}) {
           <Route path="/forum" render={(prop)=>(<Forum {...prop}/>)}/>
           <Route path="/alumni" render={(prop)=>(<Alumni {...prop}/>)}/>
           <Route path="/resources" render={(prop)=>(<Resources {...prop}/>)}/>
+          <Route path="/profile" render={(prop)=>(<Profile {...prop}/>)}/>
           <Route path="/" render={(prop)=>(<DashboardFeed {...prop} use = {props}/>)}/>
         </Switch>
         
