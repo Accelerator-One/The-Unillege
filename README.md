@@ -1,5 +1,32 @@
 # The-Unillege
-Get yourself acquainted with your college now! - A College Information Manager App
+Get yourself acquainted with your college now! A College Information Manager App
+
+## Use Case  
+Students find it difficult to gather college-specific resources or guidance for studies. With an aim to provide a holistic solution to all student needs encountered during these crucial years of college, we developed a simple solution where an individual can rely on peer guidance, ask doubts from seniors remotely and nourish their knowledge.
+
+## Salient Features
+- Forum feed exclusive to college domain
+- Post your queries on Forum ( Admin approval needed )
+- Upload learning content as a publicly shared resource  
+  ( Access restricted to college domain emails only )
+- Exclusive event notification panel for updates
+- Guidance from Alumni experience/stories
+- Open discussion on published posts
+
+## Functional Components
+- JWT Authentication
+- Forum Corner
+- Doubt Corner
+- Alumni Corner
+- Admin Panel
+- Preparation Corner
+- User Profile
+
+## Future Scopes
+- Personalized recommendations per student
+- Scoped email authentications supported for multiple college platforms
+- Automation for checking inappropriate language/toxicity
+- Scaling infrastructure on distributed serverless workloads in different regions
 
 ## Abstract
 [Powerpoint Presentation](https://drive.google.com/file/d/1X3ldQOZZ1N1-cuFHiusylquFVrZs4fSP/view?usp=sharing)
