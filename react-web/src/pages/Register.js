@@ -52,8 +52,12 @@ class Register extends Component {
     }
 
     return (
-      <Container component="main" maxWidth="xs">
-
+      <Container component="main" maxWidth="xs" style={{ 
+        'backgroundColor':'#f0f0f0',
+        'borderRadius':'12px',
+        'height':'96vh',
+        'marginTop':'2vh' 
+      }}>
         <br/><br/>
         <br/><br/>
 

@@ -59,7 +59,7 @@ export default function RecipeReviewCard({post_id,post,user_id,timestamp,image,v
       <CardHeader
         avatar={
           <Avatar aria-label="header" className={classes.avatar}>
-            {user_id}
+            {user_id.substr(0,1)}
           </Avatar>
         }
         action={
