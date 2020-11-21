@@ -17,7 +17,7 @@ class DashboardFeed extends React.Component {
             
                 this.props.use.posts.map(post=>(
                     
-                    <Post spacing={4} key={post.id} post={post.title} user_id={post.author_name_id} timestamp={ new Date(post.created_on).toDateString()} image={post.image} votes='12' />
+                    <Post spacing={4} key={post.id} title={post.title} post={post.content} user_id={post.author_name_id} timestamp={ new Date(post.created_on).toDateString()} image={post.image} votes='12' />
                     
                 ))
             }

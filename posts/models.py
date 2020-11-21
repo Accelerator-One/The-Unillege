@@ -39,4 +39,8 @@ class Events(models.Model):
 class Test(models.Model):
     author_name = models.ForeignKey(User,to_field='username', on_delete=models.CASCADE, null = True)
     
+class Notes(models.Model):
+    title = models.CharField(max_length=50)
+    pdf  = models.FileField(upload_to='pdf')
+    
     

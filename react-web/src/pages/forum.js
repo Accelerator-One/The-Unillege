@@ -62,9 +62,16 @@ export default function ComplexGrid() {
                     />
                     <TextField
                         id="standard-multiline-static"
+                        label="Post Title"
+                        multiline
+                        fullWidth
+                        required
+                    />
+                    <TextField
+                        id="standard-multiline-static"
                         label="Post Content"
                         multiline
-                        rows={4}
+                        rows={2}
                         fullWidth
                         required
                     />

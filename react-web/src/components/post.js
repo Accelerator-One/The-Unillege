@@ -18,6 +18,7 @@ import Comment from './comment';
 import List from '@material-ui/core/List';
 import TextField from '@material-ui/core/TextField';
 import SendIcon from '@material-ui/icons/Send';
+import Disqus from 'disqus-react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,11 +39,11 @@ const useStyles = makeStyles((theme) => ({
     transform: 'rotate(180deg)',
   },
   avatar: {
-    backgroundColor: red[500],
+    backgroundColor: red,
   }
 }));
 
-export default function RecipeReviewCard({post_id,post,user_id,timestamp,image,votes}) {
+export default function RecipeReviewCard({post_id,title, post,user_id,timestamp,image,votes}) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState({});
 
@@ -53,13 +54,18 @@ export default function RecipeReviewCard({post_id,post,user_id,timestamp,image,v
         [post_id]:!expanded[post_id]
       });
   };
-
+  const disqusShortname = "the-unillege"
+        const disqusConfig = {
+          url: "http://localhost:8000",
+          identifier: {post_id},
+          title: {title}
+        }
   return (
     <Card className={classes.root} id={post_id}>
       <CardHeader
         avatar={
           <Avatar aria-label="header" className={classes.avatar}>
-            {user_id.substr(0,1)}
+            {user_id.substr(0,1).toUpperCase()}
           </Avatar>
         }
         action={
@@ -78,6 +84,9 @@ export default function RecipeReviewCard({post_id,post,user_id,timestamp,image,v
       }
       
       <CardContent>
+        <Typography variant="body2" color="textPrimary" component="p">
+          <h4>{title}</h4>
+        </Typography>
         <Typography variant="body2" color="textSecondary" component="p">
           {post}
         </Typography>
@@ -111,10 +120,9 @@ export default function RecipeReviewCard({post_id,post,user_id,timestamp,image,v
       </CardActions>
       <Collapse in={expanded[post_id]} timeout="auto" unmountOnExit>
         <CardContent>
-          <List>
-                <Comment comment_id='1' user_name='Shubham Luthra' post_id='1' comment='Hi!' timestamp='12 Nov, 2020' votes='2'/>
-                <Comment comment_id='2' user_name='Harsh Srivastava' post_id='2' comment='Hello!' timestamp='12 Nov, 2020' votes='1'/>
-          </List>
+        <Disqus.DiscussionEmbed
+        shortname={disqusShortname}
+       config={disqusConfig}/>
         </CardContent>
       </Collapse>
     </Card>
