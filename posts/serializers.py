@@ -56,8 +56,7 @@ class PostSerializer(serializers.ModelSerializer):
     image = Base64ImageField(
         max_length=None, use_url=True,
     )
-    def create(self, validated_data):
-        serializer.save()
+    
     class Meta:
         fields = (
             'id',
@@ -65,7 +64,8 @@ class PostSerializer(serializers.ModelSerializer):
             'content',
             'created_on',
             'author_name_id',
-            'image'
+            'image',
+            'is_approved'
         )
         model = Post
         
@@ -104,5 +104,5 @@ class EventsSerializer(serializers.ModelSerializer):
         
 class NotesSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = ('title','pdf')
+        fields = ('title','pdf','is_approved')
         model = Notes

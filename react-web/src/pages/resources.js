@@ -12,9 +12,11 @@ class Resources extends React.Component {
         return (
            <div>
            {
-               this.props.use.notes.map(note=>(
-                <Resource name={note.title} resource={note.pdf} />
-               ))
+               this.props.use.notes.map(note=>{
+                if(note.is_approved==true)
+                return <Resource name={note.title} resource={note.pdf} />
+                
+           })
                 
            }
            </div>

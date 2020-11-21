@@ -35,6 +35,7 @@ class EventsView(viewsets.ModelViewSet):
     queryset = Events.objects.all()
     
 class NotesView(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticated,]
     serializer_class = NotesSerializer
     queryset = Notes.objects.all()
 

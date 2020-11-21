@@ -14,7 +14,6 @@ class Dashboard extends Component {
   }
 
   render(){ 
-    console.log(this.props);
   return <DashboardView props={this.props}/>;
   }
 }
@@ -52,6 +51,9 @@ const mapDispatchToProps = dispatch => {
     },
     fetchNotes: () => {
       dispatch(notes.fetchNotes());
+    },
+    addNote: (title,pdf) => {
+      return dispatch(notes.addNote(title,pdf));
     }
   }
 }

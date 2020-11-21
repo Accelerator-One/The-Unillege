@@ -30,23 +30,26 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ComplexGrid(props) {
   const classes = useStyles();
-  const [email, setEmail] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [ntitle,setNtitle] = useState("");
-  const [nemail, setNemail] = useState("");
   const [image, setImage] = useState(null);
   const [pdf, setPdf] = useState(null);
+  const [user, setUser] = useState(props.use.user.username);
+  
   const handleSubmnitNote = (e) => {
-    console.log("I was called");
+    e.preventDefault();
+    props.use.addNote(ntitle, pdf);
   }
   const handleSubmitPost = (e) => {
-    console.log(image)
-    props.use.addPost(title,content, image).then(this.resetForm)
+    e.preventDefault();
+    props.use.addPost(title,content, image, user)
   }
   const handleFiles = files => {
-    console.log(files.base64);
     setImage(files.base64);
+  }
+  const handlePdfFiles = files => {
+    setPdf(files.base64);
   }
   return (
     <div className={classes.root}>
@@ -72,13 +75,7 @@ export default function ComplexGrid(props) {
               <Grid item  xs container direction="column" padding={4} >
 
                 <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                    <TextField
-                        id="post-email"
-                        label="Email"
-                        fullWidth
-                        required
-                        onChange={(e)=>setEmail(e.target.value)}
-                    />
+                   
                     <TextField
                         id="standard-multiline-static"
                         label="Post Title"
@@ -102,9 +99,7 @@ export default function ComplexGrid(props) {
                     </Button>
                     </ReactFileReader>
                     <br/><br/>
-                    <label htmlFor="raised-button-file">
-                    
-                    </label> 
+                   
                 </Typography>
 
               </Grid> 
@@ -152,13 +147,7 @@ export default function ComplexGrid(props) {
                         required
                         onChange={(e)=>setNtitle(e.target.value)}
                     />
-                    <TextField
-                        id="notes-email"
-                        label="Email"
-                        fullWidth
-                        required
-                        onChange={(e)=>setNemail(e.target.value)}
-                    />
+                  
                     <input
                         accept="*"
                         className={classes.input}
@@ -169,11 +158,12 @@ export default function ComplexGrid(props) {
                         onChange={(e)=>setPdf(e.target.files[0])}
                     />
                     <br/><br/>
-                    <label htmlFor="raised-button-file">
+                    
+                    <ReactFileReader fileTypes={[".pdf"]} base64={true} handleFiles={handlePdfFiles}>
                     <Button variant="raised" component="span" >
-                        Upload Material
+                        Upload PDF
                     </Button>
-                    </label>
+                    </ReactFileReader>
                 </Typography>
               </Grid> 
             </Grid>

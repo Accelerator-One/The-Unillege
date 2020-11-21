@@ -8,6 +8,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     author_name = models.ForeignKey(User,to_field='username', on_delete=models.CASCADE, null = True)
     image = models.ImageField(upload_to='images/', default='images/default.jpg')
+    is_approved = models.BooleanField(default=False)
     def __str__(self):
         return self.title
 
@@ -42,5 +43,6 @@ class Test(models.Model):
 class Notes(models.Model):
     title = models.CharField(max_length=50)
     pdf  = models.FileField(upload_to='pdf')
+    is_approved = models.BooleanField(default=False)
     
     

@@ -37,7 +37,7 @@ export const fetchPosts = () => {
 }
   
 // Add Post Action
-export const addPost = (title, content, image, author_name_id='AdityaThakur') => {
+export const addPost = (title, content, image, author_name_id, is_approved=false) => {
 
   return (dispatch, getState) => {
 
@@ -47,7 +47,7 @@ export const addPost = (title, content, image, author_name_id='AdityaThakur') =>
     if (token)
       headers["Authorization"] = `Token ${token}`;
 
-    let body = JSON.stringify({title,content,image, author_name_id});
+    let body = JSON.stringify({title,content,image, author_name_id, is_approved});
     return fetch("/api/posts/", {headers, method: "POST", body})
           .then(res => {
 
