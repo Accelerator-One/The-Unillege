@@ -49,7 +49,9 @@ export default function RecipeReviewCard({story_id,story,alumni,company,image}) 
   };
 
   return (
-    <Card className={classes.root} id={"story:"+story_id}>
+    <Card className={classes.root} id={"story:"+story_id} style={{
+      'minWidth':'26.6vw'
+    }}>
       <CardHeader
         avatar={
           <Avatar aria-label="header" className={classes.avatar}>
@@ -62,7 +64,7 @@ export default function RecipeReviewCard({story_id,story,alumni,company,image}) 
       {
           (image!=="")?
           <CardMedia className={classes.media}
-          image={image} title="content"/>
+          image={image} style={{ 'width' : '13.3vw' }} title="content"/>
           : <p>&nbsp;</p>
       }
       

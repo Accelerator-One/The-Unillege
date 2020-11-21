@@ -55,6 +55,12 @@ export default function ComplexGrid() {
 
                 <Typography variant="body2" style={{ cursor: 'pointer' }}>
                     <TextField
+                        id="post-email"
+                        label="Email"
+                        fullWidth
+                        required
+                    />
+                    <TextField
                         id="standard-multiline-static"
                         label="Post Content"
                         multiline
@@ -91,6 +97,73 @@ export default function ComplexGrid() {
           </Grid>
         </Grid>
       </Paper>
+      
+      <br/><br/>
+
+      <Paper className={classes.paper}>
+        <Grid container spacing={2}>
+
+        <Grid item xs={12} sm container>
+            <Grid item xs container direction="column" spacing={2}>
+
+              <Grid item xs>
+
+                <Typography gutterBottom variant="subtitle1">
+                    <b>Upload Notes</b>
+                </Typography>
+                <Typography variant="body2" gutterBottom>
+                    Submit attachments below for peers
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                    Published after approval from Admin
+                </Typography>
+
+              </Grid>
+              <Grid item  xs container direction="column" padding={4} >
+
+                <Typography variant="body2" style={{ cursor: 'pointer' }}>
+                    <TextField
+                        id="notes-name"
+                        label="Title"
+                        fullWidth
+                        required
+                    />
+                    <TextField
+                        id="notes-email"
+                        label="Email"
+                        fullWidth
+                        required
+                    />
+                    <input
+                        accept="*"
+                        className={classes.input}
+                        style={{ display: 'none' }}
+                        id="notes-upload"
+                        multiple
+                        type="file"
+                    />
+                    <br/><br/>
+                    <label htmlFor="raised-button-file">
+                    <Button variant="raised" component="span" >
+                        Upload Material
+                    </Button>
+                    </label>
+                </Typography>
+              </Grid> 
+            </Grid>
+
+            <Grid item>
+                <Button variant='contained' color='primary'>
+                    Submit
+                </Button>
+            </Grid>
+
+          </Grid>
+        
+
+        </Grid>
+      </Paper>
+
     </div>
   );
 }

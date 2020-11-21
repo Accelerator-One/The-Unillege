@@ -30,3 +30,8 @@ a {
   box-shadow: none !important;
   background-color: transparent !important;
 }
+body {
+  background: url('https://www.slashgear.com/wp-content/uploads/2020/04/star-wars-backgrounds-25.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}

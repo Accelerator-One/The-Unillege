@@ -154,6 +154,16 @@ export default function DashBoardView({props}) {
           }),
         }}
       >
+
+        <Typography variant='h6' style={{
+          'position':'fixed',
+          'top':'16px',
+          'left':'2.5vw'
+          
+        }}>
+         { "Shubham Luthra" }
+        </Typography>
+
         <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
