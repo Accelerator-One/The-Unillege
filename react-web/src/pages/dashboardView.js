@@ -22,7 +22,7 @@ import ForumIcon from '@material-ui/icons/Forum';
 import PersonIcon from '@material-ui/icons/Person';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import NotesIcon from '@material-ui/icons/Notes';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import ChatIcon from '@material-ui/icons/Chat';
 
 import {
   Switch,
@@ -235,11 +235,11 @@ export default function DashBoardView({props}) {
           <ListItem button key='profile'>
             <ListItemIcon>
               <NavLink to='/profile'>
-               <AccountCircleIcon/>
+               <ChatIcon/>
               </NavLink>
             </ListItemIcon>
             <NavLink to='/profile'>
-              <ListItemText primary="Profile" />
+              <ListItemText primary="Discuss" />
             </NavLink>
           </ListItem>
 
