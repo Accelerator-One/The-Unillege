@@ -161,7 +161,7 @@ export default function DashBoardView({props}) {
           'left':'2.5vw'
           
         }}>
-         { "Shubham Luthra" }
+         { props.user.username }
         </Typography>
 
         <div className={classes.toolbar}>
@@ -263,7 +263,7 @@ export default function DashBoardView({props}) {
           <Route path="/forum" render={(prop)=>(<Forum {...prop}/>)}/>
           <Route path="/alumni" render={(prop)=>(<Alumni {...prop} use = {props}/>)}/>
           <Route path="/resources" render={(prop)=>(<Resources {...prop}/>)}/>
-          <Route path="/profile" render={(prop)=>(<Profile {...prop}/>)}/>
+          <Route path="/profile" render={(prop)=>(<Profile {...prop} use = {props}/>)}/>
           <Route path="/" render={(prop)=>(<DashboardFeed {...prop} use = {props}/>)}/>
         </Switch>
         

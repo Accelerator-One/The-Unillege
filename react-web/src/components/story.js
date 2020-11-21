@@ -61,12 +61,10 @@ export default function RecipeReviewCard({story_id,story,alumni,company,image}) 
         title={alumni}
         subheader={'Placed at '+company}
       />
-      {
-          (image!=="")?
+      
           <CardMedia className={classes.media}
-          image={image} style={{ 'width' : '13.3vw' }} title="content"/>
-          : <p>&nbsp;</p>
-      }
+          image={image} title="content"/>
+      
       
       <CardActions disableSpacing>
 
