@@ -54,8 +54,8 @@ export default function RecipeReviewCard({story_id,story,alumni,company,image}) 
     }}>
       <CardHeader
         avatar={
-          <Avatar aria-label="header" className={classes.avatar}>
-            {alumni.substr(0,1)}
+          <Avatar aria-label="header" className={classes.avatar} style={{color:'black'}}>
+            {alumni.substr(0,1).toUpperCase()}
           </Avatar>
         }
         title={alumni}
@@ -67,7 +67,7 @@ export default function RecipeReviewCard({story_id,story,alumni,company,image}) 
       
       
       <CardActions disableSpacing>
-
+        Have a look at my story!
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded[story_id],

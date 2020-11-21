@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -27,8 +27,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ComplexGrid() {
+export default function ComplexGrid(props) {
   const classes = useStyles();
+  const [email, setEmail] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [ntitle,setNtitle] = useState("");
+  const [nemail, setNemail] = useState("");
 
   return (
     <div className={classes.root}>
@@ -59,6 +64,7 @@ export default function ComplexGrid() {
                         label="Email"
                         fullWidth
                         required
+                        onChange={(e)=>this.setEmail(e.target.value)}
                     />
                     <TextField
                         id="standard-multiline-static"
@@ -66,6 +72,7 @@ export default function ComplexGrid() {
                         multiline
                         fullWidth
                         required
+                        onChange={(e)=>this.setTitle(e.target.value)}
                     />
                     <TextField
                         id="standard-multiline-static"
@@ -74,6 +81,7 @@ export default function ComplexGrid() {
                         rows={2}
                         fullWidth
                         required
+                        onChange={(e)=>this.setContent(e.target.value)}
                     />
                     <input
                         accept="image/*"
@@ -134,12 +142,14 @@ export default function ComplexGrid() {
                         label="Title"
                         fullWidth
                         required
+                        onChange={(e)=>this.setNtitle(e.target.value)}
                     />
                     <TextField
                         id="notes-email"
                         label="Email"
                         fullWidth
                         required
+                        onChange={(e)=>this.setNemail(e.target.value)}
                     />
                     <input
                         accept="*"
