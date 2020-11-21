@@ -26,7 +26,7 @@ class Alumni(models.Model):
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     company = models.CharField(max_length=50)
     story = models.TextField(default="this is how i got placed!")
-    image = models.ImageField(upload_to='images/', default='images/default2.jpg')
+    image = models.ImageField(upload_to='images/', default='images/default2.jpg', null=True)
     
 class VoteAlumni(models.Model):
     post = models.ForeignKey(Alumni, on_delete=models.CASCADE)

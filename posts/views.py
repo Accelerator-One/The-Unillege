@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Post, Comment, Vote, Alumni, VoteAlumni, Events
-from .serializers import PostSerializer, CommentSerializer, VoteSerializer, AlumniSerializer, VoteAlumniSerializer, EventsSerializer
+from .models import Post, Comment, Vote, Alumni, VoteAlumni, Events, Notes
+from .serializers import PostSerializer, CommentSerializer, VoteSerializer, AlumniSerializer, VoteAlumniSerializer, EventsSerializer, NotesSerializer
 from django.http import JsonResponse
 from rest_framework import viewsets, permissions
 
@@ -33,6 +33,10 @@ class VoteAlumniView(viewsets.ModelViewSet):
 class EventsView(viewsets.ModelViewSet):
     serializer_class = EventsSerializer
     queryset = Events.objects.all()
+    
+class NotesView(viewsets.ModelViewSet):
+    serializer_class = NotesSerializer
+    queryset = Notes.objects.all()
 
 
     

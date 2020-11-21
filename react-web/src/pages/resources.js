@@ -10,9 +10,14 @@ class Resources extends React.Component {
 
     render(){
         return (
-           <>
-                <Resource name='Test Object' resource='Any Random URL' />
-           </>
+           <div>
+           {
+               this.props.use.notes.map(note=>(
+                <Resource name={note.title} resource={note.pdf} />
+               ))
+                
+           }
+           </div>
         );
     }
 }

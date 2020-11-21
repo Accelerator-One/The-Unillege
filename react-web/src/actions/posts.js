@@ -37,7 +37,7 @@ export const fetchPosts = () => {
 }
   
 // Add Post Action
-export const addPost = text => {
+export const addPost = (title, content, image, author_name_id='AdityaThakur') => {
 
   return (dispatch, getState) => {
 
@@ -47,7 +47,7 @@ export const addPost = text => {
     if (token)
       headers["Authorization"] = `Token ${token}`;
 
-    let body = JSON.stringify({text});
+    let body = JSON.stringify({title,content,image, author_name_id});
     return fetch("/api/posts/", {headers, method: "POST", body})
           .then(res => {
 
@@ -64,7 +64,7 @@ export const addPost = text => {
           .then(res => {
 
             if (res.status === 201) {
-              return dispatch({type: 'ADD_POST', note: res.data});
+              return dispatch({type: 'ADD_POST', post: res.data});
             } else if (res.status === 401 || res.status === 403) {
               dispatch({type: "AUTHENTICATION_ERROR", data: res.data});
               throw res.data;

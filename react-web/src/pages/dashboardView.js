@@ -262,7 +262,7 @@ export default function DashBoardView({props}) {
           <Route exact path="/events" render={(prop)=>(<Events {...prop} use = {props}/>)}/>
           <Route path="/forum" render={(prop)=>(<Forum {...prop} use = {props}/> )}/>
           <Route path="/alumni" render={(prop)=>(<Alumni {...prop} use = {props}/>)}/>
-          <Route path="/resources" render={(prop)=>(<Resources {...prop}/>)}/>
+          <Route path="/resources" render={(prop)=>(<Resources {...prop} use={props}/>)}/>
           <Route path="/profile" render={(prop)=>(<Profile {...prop} use = {props}/>)}/>
           <Route path="/" render={(prop)=>(<DashboardFeed {...prop} use = {props}/>)}/>
         </Switch>

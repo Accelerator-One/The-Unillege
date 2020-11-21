@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
+import ReactFileReader from 'react-file-reader';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,7 +35,19 @@ export default function ComplexGrid(props) {
   const [content, setContent] = useState("");
   const [ntitle,setNtitle] = useState("");
   const [nemail, setNemail] = useState("");
-
+  const [image, setImage] = useState(null);
+  const [pdf, setPdf] = useState(null);
+  const handleSubmnitNote = (e) => {
+    console.log("I was called");
+  }
+  const handleSubmitPost = (e) => {
+    console.log(image)
+    props.use.addPost(title,content, image).then(this.resetForm)
+  }
+  const handleFiles = files => {
+    console.log(files.base64);
+    setImage(files.base64);
+  }
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -64,7 +77,7 @@ export default function ComplexGrid(props) {
                         label="Email"
                         fullWidth
                         required
-                        onChange={(e)=>this.setEmail(e.target.value)}
+                        onChange={(e)=>setEmail(e.target.value)}
                     />
                     <TextField
                         id="standard-multiline-static"
@@ -72,7 +85,7 @@ export default function ComplexGrid(props) {
                         multiline
                         fullWidth
                         required
-                        onChange={(e)=>this.setTitle(e.target.value)}
+                        onChange={(e)=>setTitle(e.target.value)}
                     />
                     <TextField
                         id="standard-multiline-static"
@@ -81,21 +94,16 @@ export default function ComplexGrid(props) {
                         rows={2}
                         fullWidth
                         required
-                        onChange={(e)=>this.setContent(e.target.value)}
+                        onChange={(e)=>setContent(e.target.value)}
                     />
-                    <input
-                        accept="image/*"
-                        className={classes.input}
-                        style={{ display: 'none' }}
-                        id="raised-button-file"
-                        multiple
-                        type="file"
-                    />
+                    <ReactFileReader fileTypes={[".jpg", ".png", ".jpeg"]} base64={true} handleFiles={handleFiles}>
+                    <Button variant="raised" component="span" >
+                        Upload Image
+                    </Button>
+                    </ReactFileReader>
                     <br/><br/>
                     <label htmlFor="raised-button-file">
-                    <Button variant="raised" component="span" >
-                        Upload Screenshot
-                    </Button>
+                    
                     </label> 
                 </Typography>
 
@@ -104,7 +112,7 @@ export default function ComplexGrid(props) {
             </Grid>
 
             <Grid item>
-                <Button variant='contained' color='primary'>
+                <Button variant='contained' color='primary' onClick={handleSubmitPost}>
                     Submit
                 </Button>
             </Grid>
@@ -142,14 +150,14 @@ export default function ComplexGrid(props) {
                         label="Title"
                         fullWidth
                         required
-                        onChange={(e)=>this.setNtitle(e.target.value)}
+                        onChange={(e)=>setNtitle(e.target.value)}
                     />
                     <TextField
                         id="notes-email"
                         label="Email"
                         fullWidth
                         required
-                        onChange={(e)=>this.setNemail(e.target.value)}
+                        onChange={(e)=>setNemail(e.target.value)}
                     />
                     <input
                         accept="*"
@@ -158,6 +166,7 @@ export default function ComplexGrid(props) {
                         id="notes-upload"
                         multiple
                         type="file"
+                        onChange={(e)=>setPdf(e.target.files[0])}
                     />
                     <br/><br/>
                     <label htmlFor="raised-button-file">
@@ -170,7 +179,7 @@ export default function ComplexGrid(props) {
             </Grid>
 
             <Grid item>
-                <Button variant='contained' color='primary'>
+                <Button variant='contained' color='primary' onClick={handleSubmnitNote} >
                     Submit
                 </Button>
             </Grid>

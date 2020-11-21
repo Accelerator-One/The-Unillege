@@ -9,7 +9,7 @@ export default function posts(state = initialState, action) {
     switch (action.type) {
         case 'ADD_POST':
             return [...state, action.post];
-        case 'UPDATE_NOTE':
+        case 'UPDATE_POST':
             let postToUpdate = postList[action.id]
             postToUpdate.text = action.text;
             postList.splice(action.id, 1, postToUpdate);

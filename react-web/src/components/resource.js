@@ -19,19 +19,26 @@ const useStyles = makeStyles((theme) => ({
 const Resource = ({name,resource})=> {
 
     const classes = useStyles();
-
+    
     return(
+      
+        
+        
         <Accordion>
+        
         <AccordionSummary
           expandIcon={
-            <Button variant="raised" component="span" download={resource} >
+            <a type = "button" target="_blank" href={resource} variant="raised" component="span">
                 Download File
-            </Button>
+            </a>
+            
           }
         >
           <Typography className={classes.heading}> {name} </Typography>
         </AccordionSummary>
       </Accordion>
+      
+  
     );
 };
 

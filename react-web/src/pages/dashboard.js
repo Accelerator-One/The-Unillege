@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { StaticRouter } from "react-router-dom";
-import { posts, auth, alumni, events } from "../actions";
+import { posts, auth, alumni, events, notes } from "../actions";
 import DashboardView from './dashboardView';
 
 class Dashboard extends Component {
@@ -10,6 +10,7 @@ class Dashboard extends Component {
     this.props.fetchPosts();
     this.props.fetchAlumni();
     this.props.fetchEvents();
+    this.props.fetchNotes();
   }
 
   render(){ 
@@ -24,6 +25,7 @@ const mapStateToProps = state => {
     user: state.auth.user,
     alumni: state.alumni,
     events: state.events,
+    notes: state.notes
   }
 }
 
@@ -32,8 +34,8 @@ const mapDispatchToProps = dispatch => {
     fetchPosts: () => {
       dispatch(posts.fetchPosts());
     },
-    addPost: (text) => {
-      return dispatch(posts.addPost(text));
+    addPost: (title,text, image) => {
+      return dispatch(posts.addPost(title,text,image));
     },
     updatePost: (id, text) => {
       return dispatch(posts.updatePost(id, text));
@@ -48,6 +50,9 @@ const mapDispatchToProps = dispatch => {
     fetchEvents: () => {
       dispatch(events.fetchEvents());
     },
+    fetchNotes: () => {
+      dispatch(notes.fetchNotes());
+    }
   }
 }
 
