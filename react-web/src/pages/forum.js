@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
 import ReactFileReader from 'react-file-reader';
+import swal from 'sweetalert';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,20 +38,32 @@ export default function ComplexGrid(props) {
   const [pdf, setPdf] = useState(null);
   const [user, setUser] = useState(props.use.user.username);
   
+  // Note submission utility
   const handleSubmnitNote = (e) => {
     e.preventDefault();
-    props.use.addNote(ntitle, pdf);
+    props.use.addNote(ntitle, pdf).then(()=>{
+      swal('Successful','Note submitted!','success');
+    })
+    .catch(err => swal('Failed',err.message,'error'));
   }
+
+  // Post submission utility
   const handleSubmitPost = (e) => {
     e.preventDefault();
-    props.use.addPost(title,content, image, user)
+    props.use.addPost(title,content, image, user).then(()=>{
+      swal('Successful','Post submitted!','success');
+    })
+    .catch(err => swal('Failed',err.message,'error'));
   }
+
   const handleFiles = files => {
     setImage(files[0]);
   }
+
   const handlePdfFiles = files => {
     setPdf(files[0]);
   }
+  
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
