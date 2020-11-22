@@ -33,8 +33,8 @@ const mapDispatchToProps = dispatch => {
     fetchPosts: () => {
       dispatch(posts.fetchPosts());
     },
-    addPost: (title,text, image) => {
-      return dispatch(posts.addPost(title,text,image));
+    addPost: (title,content, image, user) => {
+      return dispatch(posts.addPost(title,content,image, user));
     },
     updatePost: (id, text) => {
       return dispatch(posts.updatePost(id, text));

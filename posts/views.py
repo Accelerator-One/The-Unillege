@@ -3,15 +3,16 @@ from .models import Post, Comment, Vote, Alumni, VoteAlumni, Events, Notes
 from .serializers import PostSerializer, CommentSerializer, VoteSerializer, AlumniSerializer, VoteAlumniSerializer, EventsSerializer, NotesSerializer
 from django.http import JsonResponse
 from rest_framework import viewsets, permissions
+from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.response import Response
+from rest_framework import status
 
 class PostView(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated,]
     serializer_class = PostSerializer
     # queryset = Post.objects.all()
     def get_queryset(self):
-        return Post.objects.all()
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        return Post.objects.all() 
     
     
 class CommentView(viewsets.ModelViewSet):

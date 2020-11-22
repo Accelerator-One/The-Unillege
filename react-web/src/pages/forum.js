@@ -33,7 +33,7 @@ export default function ComplexGrid(props) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [ntitle,setNtitle] = useState("");
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState({});
   const [pdf, setPdf] = useState(null);
   const [user, setUser] = useState(props.use.user.username);
   
@@ -46,10 +46,10 @@ export default function ComplexGrid(props) {
     props.use.addPost(title,content, image, user)
   }
   const handleFiles = files => {
-    setImage(files.base64);
+    setImage(files[0]);
   }
   const handlePdfFiles = files => {
-    setPdf(files.base64);
+    setPdf(files[0]);
   }
   return (
     <div className={classes.root}>
@@ -93,7 +93,7 @@ export default function ComplexGrid(props) {
                         required
                         onChange={(e)=>setContent(e.target.value)}
                     />
-                    <ReactFileReader fileTypes={[".jpg", ".png", ".jpeg"]} base64={true} handleFiles={handleFiles}>
+                    <ReactFileReader fileTypes={[".jpg", ".png", ".jpeg"]} handleFiles={handleFiles}>
                     <Button variant="raised" component="span" >
                         Upload Image
                     </Button>
@@ -159,11 +159,12 @@ export default function ComplexGrid(props) {
                     />
                     <br/><br/>
                     
-                    <ReactFileReader fileTypes={[".pdf"]} base64={true} handleFiles={handlePdfFiles}>
+                    <ReactFileReader fileTypes={[".pdf"]} handleFiles={handlePdfFiles}>
                     <Button variant="raised" component="span" >
                         Upload PDF
                     </Button>
                     </ReactFileReader>
+                    <input type="file" id="myFile" name="filename" onChange={(e)=>setPdf(e.target.value)}/>
                 </Typography>
               </Grid> 
             </Grid>

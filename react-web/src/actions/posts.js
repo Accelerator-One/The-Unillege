@@ -46,8 +46,8 @@ export const addPost = (title, content, image, author_name_id, is_approved=false
 
     if (token)
       headers["Authorization"] = `Token ${token}`;
-
-    let body = JSON.stringify({title,content,image, author_name_id, is_approved});
+   let body = JSON.stringify({title,content,image, author_name_id, is_approved});
+   
     return fetch("/api/posts/", {headers, method: "POST", body})
           .then(res => {
 
