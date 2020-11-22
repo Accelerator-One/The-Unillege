@@ -164,7 +164,6 @@ export default function ComplexGrid(props) {
                         Upload PDF
                     </Button>
                     </ReactFileReader>
-                    <input type="file" id="myFile" name="filename" onChange={(e)=>setPdf(e.target.value)}/>
                 </Typography>
               </Grid> 
             </Grid>

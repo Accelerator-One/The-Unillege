@@ -64,6 +64,7 @@ class PostSerializer(serializers.ModelSerializer):
             'content',
             'created_on',
             'author_name_id',
+            'user',
             'image',
             'is_approved'
         )

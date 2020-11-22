@@ -40,15 +40,18 @@ export const fetchPosts = () => {
 export const addPost = (title, content, image, author_name_id, is_approved=false) => {
 
   return (dispatch, getState) => {
-
-    let headers = {"Content-Type": "application/json"};
+    let newObject = new FormData();
+    newObject.append('title',title);
+    newObject.append('content', content);
+    newObject.append('image',image);
+    newObject.append('user', author_name_id);
+    let headers = {};
     let {token} = getState().auth;
 
     if (token)
       headers["Authorization"] = `Token ${token}`;
-   let body = JSON.stringify({title,content,image, author_name_id, is_approved});
    
-    return fetch("/api/posts/", {headers, method: "POST", body})
+    return fetch("/api/posts/", {headers, method: "POST", body: newObject})
           .then(res => {
 
             if (res.status < 500) {

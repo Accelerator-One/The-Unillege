@@ -29,14 +29,16 @@ export const addNote = (title, pdf) => {
 
   return (dispatch, getState) => {
 
-    let headers = {"Content-Type": "application/json"};
+    let headers = {};
     let {token} = getState().auth;
 
     if (token)
       headers["Authorization"] = `Token ${token}`;
 
-    let body = JSON.stringify({title,pdf});
-    return fetch("/api/notes/", {headers, method: "POST", body})
+      let newObject = new FormData();
+      newObject.append('title',title);
+      newObject.append('pdf', pdf);
+    return fetch("/api/notes/", {headers, method: "POST", body:newObject})
           .then(res => {
 
             if (res.status < 500) {

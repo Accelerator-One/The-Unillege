@@ -7,6 +7,7 @@ class Post(models.Model):
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     author_name = models.ForeignKey(User,to_field='username', on_delete=models.CASCADE, null = True)
+    user = models.CharField(max_length=50, null=True)
     image = models.ImageField(upload_to='images/', default='images/default.jpg')
     is_approved = models.BooleanField(default=False)
     def __str__(self):
