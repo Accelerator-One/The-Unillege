@@ -13,6 +13,7 @@ django-filter = "*"
 django-cors-headers = "*"
 django-rest-knox = "*"
 pillow = "*"
+django-3-jet = "*"
 
 [requires]
 python_version = "3.9"

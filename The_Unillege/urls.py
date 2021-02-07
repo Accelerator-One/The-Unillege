@@ -24,6 +24,8 @@ from django.conf import settings
 urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += [
+     url(r'^jet/', include('jet.urls', 'jet')), 
+     url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     path('admin/', admin.site.urls),
     url(r'^api/', include('UserManagement.urls')),
     url(r'^api/auth/', include('knox.urls')),
