@@ -14,6 +14,7 @@ django-cors-headers = "*"
 django-rest-knox = "*"
 pillow = "*"
 django-3-jet = "*"
+djangocms-admin-style = "*"
 
 [requires]
 python_version = "3.9"
