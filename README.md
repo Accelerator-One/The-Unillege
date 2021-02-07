@@ -3,6 +3,8 @@ Get yourself acquainted with your college now! A College Information Manager App
 
 ![Screenshot](screenshot.png?raw=true)
 
+![Screenshot](screenshot2.png?raw=true)
+
 ## Use Case  
 Students find it difficult to gather college-specific resources or guidance for studies. With an aim to provide a holistic solution to all student needs encountered during these crucial years of college, we developed a simple solution where an individual can rely on peer guidance, ask doubts from seniors remotely and nourish their knowledge.
 
