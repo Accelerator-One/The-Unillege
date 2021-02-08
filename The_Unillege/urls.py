@@ -20,14 +20,12 @@ from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from django.conf import settings
 
-
-urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-urlpatterns += [
+urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^api/', include('UserManagement.urls')),
-    url(r'^api/auth/', include('knox.urls')),
-    re_path(r'^', TemplateView.as_view(template_name='index.html'))
-]
+    path('', include('webpages.urls')),
+    # url(r'^api/', include('UserManagement.urls')),
+    # url(r'^api/auth/', include('knox.urls')),
+    # re_path(r'^', TemplateView.as_view(template_name='index.html'))
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

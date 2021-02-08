@@ -39,8 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'UserManagement',
-    'posts',
+    # 'UserManagement.apps.UsermanagementConfig',
+    # 'posts.apps.PostsConfig',
     'rest_framework',
     'corsheaders',
     'knox',
@@ -62,7 +62,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR,'react-web/build'),
+            # os.path.join(BASE_DIR,'react-web/build'),
+            'templates'
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -132,9 +133,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'react-web/build/static'),
-    os.path.join(BASE_DIR, 'media/images')
+    # os.path.join(BASE_DIR,'react-web/build/static'),
+    # os.path.join(BASE_DIR, 'media/images'),
+    os.path.join(BASE_DIR, 'The_Unillege/static')
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -146,9 +150,9 @@ REST_FRAMEWORK = {
 }
 
 CORS_ORIGIN_WHITELIST = (
-     'http://localhost:3000',
+    #  'http://localhost:3000',
     'http://localhost:8000',
-    'http://localhost:8080',
+    # 'http://localhost:8080',
  )
 CORS_ORIGIN_ALLOW_ALL = True
 
