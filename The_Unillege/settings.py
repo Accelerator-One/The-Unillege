@@ -39,18 +39,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'UserManagement.apps.UsermanagementConfig',
-    # 'posts.apps.PostsConfig',
-    'rest_framework',
-    'corsheaders',
-    'knox',
+    'Alumni.apps.AlumniConfig',
+    'blog.apps.BlogConfig',
+    'events.apps.EventsConfig',
+    'forum.apps.ForumConfig',
+    'Home.apps.HomeConfig',
+    'Resources.apps.ResourcesConfig',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -62,7 +63,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            # os.path.join(BASE_DIR,'react-web/build'),
+            # TODO:
             'templates'
         ],
         'APP_DIRS': True,
@@ -133,28 +134,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    # os.path.join(BASE_DIR,'react-web/build/static'),
-    # os.path.join(BASE_DIR, 'media/images'),
-    os.path.join(BASE_DIR, 'The_Unillege/static')
+    # TODO:
+    os.path.join(BASE_DIR, ''),
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    # 'DEFAULT_PERMISSION_CLASSES': [
-    #     'rest_framework.permissions.IsAuthenticated',
-    # ],
-    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',),
-}
-
-CORS_ORIGIN_WHITELIST = (
-    #  'http://localhost:3000',
-    'http://localhost:8000',
-    # 'http://localhost:8080',
- )
-CORS_ORIGIN_ALLOW_ALL = True
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
