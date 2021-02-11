@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'forum.apps.ForumConfig',
     'Home.apps.HomeConfig',
     'Resources.apps.ResourcesConfig',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -63,8 +64,13 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            # TODO:
-            'templates'
+            'base_templates',
+            'Home/templates',
+            'Alumni/templates',
+            'blog/templates',
+            'events/templates',
+            'forum/templates',
+            'Resources/templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -135,7 +141,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     # TODO:
-    os.path.join(BASE_DIR, ''),
+    os.path.join(BASE_DIR, 'base_templates/static'),
+    os.path.join(BASE_DIR, 'Home/templates/static'),
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')

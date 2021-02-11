@@ -56,8 +56,9 @@
           </div>
      </section>
 
-
+     <!--TODO:Adjust Image size-->
      <!-- PROJECT -->
+     
      <section class="project section-padding" id="project">
           <div class="container-fluid">
                <div class="row">
@@ -70,97 +71,40 @@
                         </h2>
 
                          <div class="owl-carousel owl-theme" id="project-slide">
+                              {% for blog in featured_blogs %}
                               <div class="item project-wrapper" data-aos="fade-up" data-aos-delay="100">
-                                   <img src="{% static 'images/project/project-image01.jpg' %}" class="img-fluid" alt="project image">
+                                   <img src="{{ blog.image.url }}" class="img-fluid" alt="project image">
 
                                    <div class="project-info">
-                                        <small>Marketing</small>
+                                        <small>{{blog.category}}</small>
 
                                         <h3>
                                              <a href="project-detail.html">
-                                                  <span>Sweet Go Agency</span>
+                                                  <span>{{blog.title}}</span>
                                                   <i class="fa fa-angle-right project-icon"></i>
                                              </a>
                                         </h3>
                                    </div>
                               </div>
-
-                              <div class="item project-wrapper" data-aos="fade-up">
-                                   <img src="{% static 'images/project/project-image02.jpg' %}" class="img-fluid" alt="project image">
-
-                                   <div class="project-info">
-                                        <small>Website</small>
-
-                                        <h3>
-                                             <a href="project-detail">
-                                                  <span>Smart Ladies</span>
-                                                  <i class="fa fa-angle-right project-icon"></i>
-                                             </a>
-                                        </h3>
-                                   </div>
-                              </div>
-
-                              <div class="item project-wrapper" data-aos="fade-up">
-                                   <img src="{% static 'images/project/project-image03.jpg' %}" class="img-fluid" alt="project image">
-
-                                   <div class="project-info">
-                                        <small>Branding</small>
-
-                                        <h3>
-                                             <a href="project-detail">
-                                                  <span>Shoes factory</span>
-                                                  <i class="fa fa-angle-right project-icon"></i>
-                                             </a>
-                                        </h3>
-                                   </div>
-                              </div>
-
-                              <div class="item project-wrapper" data-aos="fade-up">
-                                   <img src="{% static 'images/project/project-image04.jpg' %}" class="img-fluid" alt="project image">
-
-                                   <div class="project-info">
-                                        <small>Social Media</small>
-
-                                        <h3>
-                                             <a href="project-detail">
-                                                  <span>Race Bicycle</span>
-                                                  <i class="fa fa-angle-right project-icon"></i>
-                                             </a>
-                                        </h3>
-                                   </div>
-                              </div>
-
-                              <div class="item project-wrapper" data-aos="fade-up">
-                                   <img src="{% static 'images/project/project-image05.jpg' %}" class="img-fluid" alt="project image">
-
-                                   <div class="project-info">
-                                        <small>Video</small>
-
-                                        <h3>
-                                             <a href="project-detail">
-                                                  <span>Ultimate HealthCare</span>
-                                                  <i class="fa fa-angle-right project-icon"></i>
-                                             </a>
-                                        </h3>
-                                   </div>
-                              </div>
+                              {% endfor %}
                          </div>
                     </div>
 
                </div>
           </div>
      </section>
+  
 
 
      <!-- TESTIMONIAL -->
      <section class="testimonial section-padding">
           <div class="container">
                <div class="row">
-
+                    {% for testimonial in testimonials %}
                     <div class="col-lg-6 col-md-5 col-12">
                         <div class="contact-image" data-aos="fade-up">
 
-                          <img src="{% static 'images/female-avatar.png' %}" class="img-fluid" alt="website">
+                          <img src="{{testimonial.image.url}}" class="img-fluid" alt="website">
                         </div>
                     </div>
 
@@ -169,17 +113,17 @@
 
                       <div class="quote" data-aos="fade-up" data-aos-delay="200"></div>
 
-                      <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo.</h2>
+                      <h2 class="mb-4" data-aos="fade-up" data-aos-delay="300">{{testimonial.testimonial}}</h2>
 
                       <p data-aos="fade-up" data-aos-delay="400">
-                        <strong>Mary Zoe</strong>
+                        <strong>{{testimonial.first_name}} {{testimonial.last_name}}</strong>
 
                         <span class="mx-1">/</span>
 
-                        <small>Digital Agency (CEO)</small>
+                        <small>{{testimonial.designation}}</small>
                       </p>
                     </div>
-
+                    {% endfor %}
                </div>
           </div>
      </section>

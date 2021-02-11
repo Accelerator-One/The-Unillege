@@ -10,6 +10,7 @@ django = "*"
 psycopg2 = "*"
 pillow = "*"
 djangocms-admin-style = "*"
+django-ckeditor = "*"
 
 [requires]
 python_version = "3.9"
